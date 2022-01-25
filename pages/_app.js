@@ -5,6 +5,7 @@ import ThemeConfig from "themes/";
 import { CacheProvider } from "@emotion/react";
 import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
+
 const clientSideEmotionCache = createEmotionCache();
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

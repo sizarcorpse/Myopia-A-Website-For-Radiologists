@@ -7,6 +7,7 @@
       "utils/*": ["utils/*"],
       "styles/*": ["styles/*"],
       "pages/*": ["pages/*"],
+      "mocks/*": ["mocks/*"],
       "themes/*": ["themes/*"]
     }
   }

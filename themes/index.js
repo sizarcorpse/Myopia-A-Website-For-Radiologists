@@ -10,6 +10,7 @@ import {
 import ComponentsOverrides from "./overrides";
 import typography from "./customs/typography";
 import palette from "./customs/palette";
+import breakpoints from "./customs/breakpoints";
 
 ThemeConfig.propTypes = {
   children: PropTypes.node,
@@ -20,6 +21,7 @@ export default function ThemeConfig({ children }) {
     () => ({
       typography,
       palette,
+      breakpoints,
     }),
     []
   );
