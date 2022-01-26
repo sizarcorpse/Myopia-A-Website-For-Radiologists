@@ -19,9 +19,9 @@ function responsiveFontSizes({ xs, sm, md, lg }) {
   };
 }
 
-const FONT_PRIMARY = "Poppins', sans-serif";
-const FONT_SECONDARY = "Jost', sans-serif";
-const FONT_TERTIARY = "Alata', sans-serif";
+const FONT_PRIMARY = "Poppins, sans-serif";
+const FONT_SECONDARY = "Jost, sans-serif";
+const FONT_TERTIARY = "Alata, sans-serif";
 
 const typography = {
   fontFamily: FONT_PRIMARY,
@@ -57,12 +57,14 @@ const typography = {
     ...responsiveFontSizes({ xs: 18, sm: 20, md: 22, lg: 24 }),
   },
   h5: {
+    fontFamily: FONT_PRIMARY,
     fontWeight: 400,
     lineHeight: 1.5,
     fontSize: pxToRem(28),
     ...responsiveFontSizes({ xs: 18, sm: 18, md: 18, lg: 18 }),
   },
   h6: {
+    fontFamily: FONT_PRIMARY,
     fontWeight: 300,
     lineHeight: 28 / 18,
     fontSize: pxToRem(22),
@@ -80,6 +82,7 @@ const typography = {
     fontSize: pxToRem(12),
   },
   body1: {
+    fontFamily: FONT_PRIMARY,
     lineHeight: 1.7,
     fontWeight: 300,
     fontSize: pxToRem(16),

@@ -5,10 +5,12 @@ import ThemeConfig from "themes/";
 import { CacheProvider } from "@emotion/react";
 import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
+import { Navigation } from "components/surface";
 
 const clientSideEmotionCache = createEmotionCache();
-export default function MyApp(props) {
+export default function App(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   return (
     <CacheProvider value={emotionCache}>
       <Head>
@@ -21,14 +23,16 @@ export default function MyApp(props) {
             fetcher: (url) => fetch(url).then((r) => r.json()),
           }}
         >
-          <Component {...pageProps} />
+          <Navigation>
+            <Component {...pageProps} />
+          </Navigation>
         </SWRConfig>
       </ThemeConfig>
     </CacheProvider>
   );
 }
 
-MyApp.propTypes = {
+App.propTypes = {
   Component: PropTypes.elementType.isRequired,
   emotionCache: PropTypes.object,
   pageProps: PropTypes.object.isRequired,
