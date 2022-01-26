@@ -17,6 +17,14 @@ const MPHeroStyled = styled(Box)(({ theme, bgIp, bgIm }) => ({
     height: "calc(100vh - 50px)",
     backgroundImage: `linear-gradient(0deg, rgba(3, 131, 199, 0.5), rgba(3, 131, 199, 0.5)),url(${bgIm})`,
   },
+
+  "& .contents": {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
+    gap: theme.spacing(2),
+  },
 }));
 
 const MPHero = forwardRef(
@@ -35,7 +43,7 @@ const MPHero = forwardRef(
         bgIp={backgroundImageForDesktop}
         bgIm={backgroundImageForMobile}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" className="contents">
           {Children.map(children, (child) => {
             if (isValidElement(child)) {
               return cloneElement(child, { ...others });

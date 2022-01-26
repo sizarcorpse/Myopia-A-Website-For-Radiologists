@@ -1,14 +1,15 @@
 import {} from "react";
 import PropTypes from "prop-types";
-import { Box, styled } from "@mui/material";
-import { MPHeroTitle, MPHero } from "components/ui";
-
+import { Box, styled, ButtonGroup } from "@mui/material";
+import { MPHeroTitle, MPHero, MPButton } from "components/ui";
+import SearchIcon from "@mui/icons-material/Search";
 const HomeHero = (props) => {
   const {
     data: {
       title,
       description,
       background: { desktop, mobile },
+      button,
     },
   } = props;
 
@@ -18,6 +19,9 @@ const HomeHero = (props) => {
       backgroundImageForMobile={mobile}
     >
       <MPHeroTitle heroTitle={title} heroDescription={description} />
+      <MPButton linkTo={button[0].linkTo} variant="light" icon={<SearchIcon />}>
+        {button[0].title}
+      </MPButton>
     </MPHero>
   );
 };

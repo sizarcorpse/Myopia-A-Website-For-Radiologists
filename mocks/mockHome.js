@@ -9,6 +9,18 @@ const mockHome = {
       mobile:
         "https://images.unsplash.com/photo-1614308459036-779d0dfe51ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=100",
     },
+    button: [
+      {
+        title: "Search our Location",
+        linkTo: "/",
+        variant: "lightish",
+      },
+      {
+        title: "Book an appointment",
+        linkTo: "/",
+        variant: "light",
+      },
+    ],
   },
 };
 
