@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Grid, Container, styled } from "@mui/material";
 
 import { HomeHero } from "components/section/home/";
-
+import { mockHome } from "mocks/";
 const Home = () => {
   return (
     <Grid component="main">
@@ -12,9 +12,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid item xs={12}>
-        <Container maxWidth="lg">
-          <HomeHero />
-        </Container>
+        <HomeHero data={mockHome.hero} />
       </Grid>
     </Grid>
   );

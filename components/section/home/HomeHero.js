@@ -1,21 +1,36 @@
 import {} from "react";
 import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
-import { MPHeroTitle } from "components/ui";
+import { MPHeroTitle, MPHero } from "components/ui";
 
 const HomeHero = (props) => {
-  const {} = props;
+  const {
+    data: {
+      title,
+      description,
+      background: { desktop, mobile },
+    },
+  } = props;
 
   return (
-    <Box>
-      <MPHeroTitle
-        heroTitle="Community Radiology"
-        heroDescription="Our professional staff are committed to efficiently carrying out the delivery of quality imaging services by utilising evidence-based medicine founded on the latest research and contributes to the scientific literature."
-      />
-    </Box>
+    <MPHero
+      backgroundImageForDesktop={desktop}
+      backgroundImageForMobile={mobile}
+    >
+      <MPHeroTitle heroTitle={title} heroDescription={description} />
+    </MPHero>
   );
 };
 
-HomeHero.propTypes = {};
+HomeHero.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    background: PropTypes.shape({
+      desktop: PropTypes.string.isRequired,
+      mobile: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default HomeHero;

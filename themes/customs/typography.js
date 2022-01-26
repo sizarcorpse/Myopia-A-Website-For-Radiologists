@@ -84,7 +84,7 @@ const typography = {
   body1: {
     fontFamily: FONT_PRIMARY,
     lineHeight: 1.7,
-    fontWeight: 300,
+    fontWeight: 400,
     fontSize: pxToRem(16),
   },
   body2: {

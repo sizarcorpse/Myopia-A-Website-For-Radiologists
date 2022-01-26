@@ -17,7 +17,7 @@ export default function Container(theme) {
               padding: theme.spacing(10, 2),
             },
             [theme.breakpoints.up("lg")]: {
-              padding: theme.spacing(12, 0),
+              padding: theme.spacing(12, 2),
             },
           },
           "&.MuiContainer-maxWidthXs": {
