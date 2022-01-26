@@ -5,6 +5,7 @@ import ThemeConfig from "themes/";
 import { CacheProvider } from "@emotion/react";
 import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
+import Cookies from "js-cookie";
 import { Navigation } from "components/surface";
 
 const clientSideEmotionCache = createEmotionCache();
