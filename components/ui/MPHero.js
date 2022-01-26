@@ -23,7 +23,7 @@ const MPHeroStyled = styled(Box)(({ theme, bgIp, bgIm }) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-    gap: theme.spacing(2),
+    gap: theme.spacing(4),
   },
 }));
 
@@ -54,11 +54,6 @@ const MPHero = forwardRef(
     );
   }
 );
-
-// MPHero.defaultProps = {
-//   backgroundImageForPc: " rgba(3, 131, 199, 0.5)",
-//   backgroundImageForMobile: "rgba(3, 131, 199, 0.5)",
-// };
 
 MPHero.propTypes = {
   children: PropTypes.node.isRequired,

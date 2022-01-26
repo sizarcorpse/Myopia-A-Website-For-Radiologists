@@ -1,8 +1,9 @@
 import {} from "react";
 import PropTypes from "prop-types";
 import { Box, styled, ButtonGroup } from "@mui/material";
-import { MPHeroTitle, MPHero, MPButton } from "components/ui";
+import { MPHeroTitle, MPHero, MPButton, MPButtonGroup } from "components/ui";
 import SearchIcon from "@mui/icons-material/Search";
+import SendIcon from "@mui/icons-material/Send";
 const HomeHero = (props) => {
   const {
     data: {
@@ -19,9 +20,23 @@ const HomeHero = (props) => {
       backgroundImageForMobile={mobile}
     >
       <MPHeroTitle heroTitle={title} heroDescription={description} />
-      <MPButton linkTo={button[0].linkTo} variant="light" icon={<SearchIcon />}>
-        {button[0].title}
-      </MPButton>
+
+      <MPButtonGroup>
+        <MPButton
+          linkTo={button[0].linkTo}
+          variant={button[0].variant}
+          icon={<SearchIcon />}
+        >
+          {button[0].title}
+        </MPButton>
+        <MPButton
+          linkTo={button[1].linkTo}
+          variant={button[1].variant}
+          icon={<SendIcon />}
+        >
+          {button[1].title}
+        </MPButton>
+      </MPButtonGroup>
     </MPHero>
   );
 };
