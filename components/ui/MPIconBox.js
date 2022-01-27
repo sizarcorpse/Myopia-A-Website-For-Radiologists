@@ -5,16 +5,16 @@ import PropTypes from "prop-types";
 
 import { Box, styled, Typography } from "@mui/material";
 
-const MpIconBoxStyled = styled(Box)(({ theme }) => ({
+const MpIconBoxStyled = styled(Box)(({ theme, mode }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  justifyContent: "flex-start",
+  justifyContent: mode === "playOnSlider" ? "center" : "flex-start",
   flexFlow: 1,
   gap: theme.spacing(2.5),
   padding: theme.spacing(4, 4),
-  width: "220px",
-  height: "220px",
+  width: mode === "playOnSlider" ? "100%" : "220px",
+  height: mode === "playOnSlider" ? "220px" : "220px",
   cursor: "pointer",
   border: 0,
   borderRadius: 6,
@@ -24,10 +24,13 @@ const MpIconBoxStyled = styled(Box)(({ theme }) => ({
 
   transition: "box-shadow .15s, transform .15s",
   willChange: "box-shadow, transform",
-  "&:hover": {
-    backgroundImage: `radial-gradient(100% 100% at 100% 0, #5adaff 0, #0383C7 100%)`,
-    boxShadow: `rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset`,
-    transform: "translateY(2px)",
+
+  [theme.breakpoints.up("sm")]: {
+    "&:hover": {
+      backgroundImage: `radial-gradient(100% 100% at 100% 0, #5adaff 0, #0383C7 100%)`,
+      boxShadow: `rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset`,
+      transform: "translateY(2px)",
+    },
   },
 
   "& a": {
@@ -42,10 +45,11 @@ const MpIconBoxStyled = styled(Box)(({ theme }) => ({
 const MPIconBox = (props) => {
   const {
     item: { icon, title, linkTo },
+    mode,
   } = props;
 
   return (
-    <MpIconBoxStyled>
+    <MpIconBoxStyled mode={mode ? mode : undefined}>
       <Link href={linkTo}>
         <a>
           <Image src={icon} alt={title} width={69} height={69} />
@@ -64,6 +68,7 @@ MPIconBox.propTypes = {
     title: PropTypes.string,
     linkTo: PropTypes.string,
   }),
+  mode: PropTypes.string,
 };
 
 export default MPIconBox;
