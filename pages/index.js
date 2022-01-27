@@ -1,10 +1,14 @@
 import Head from "next/head";
 import { Grid, Container, styled } from "@mui/material";
 
-import { HomeHero, HomeIntroduction } from "components/section/home/";
+import {
+  HomeHero,
+  HomeIntroduction,
+  HomeServices,
+} from "components/section/home/";
 import { mockHome } from "mocks/";
 const Home = () => {
-  const { hero, introduction } = mockHome;
+  const { hero, introduction, services } = mockHome;
   return (
     <Grid component="main">
       <Head>
@@ -18,6 +22,11 @@ const Home = () => {
       <Grid item xs={12}>
         <Container maxWidth="lg">
           <HomeIntroduction data={introduction} />
+        </Container>
+      </Grid>
+      <Grid item xs={12}>
+        <Container maxWidth="lg">
+          <HomeServices data={services} />
         </Container>
       </Grid>
     </Grid>
