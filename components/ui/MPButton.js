@@ -48,14 +48,14 @@ const buttonVariants = {
 };
 
 const MPButton = (props) => {
-  const { children, linkTo, variant, icon } = props;
+  const { children, goto, variant, icon } = props;
 
   return (
     <MpButtonStyled
       variant={variant ? buttonVariants[variant] : buttonVariants["dark"]}
       isLight={variant === "light" ? true : false}
     >
-      <Link href={linkTo} icon={icon}>
+      <Link href={goto}>
         <a>
           {children}
           {icon && cloneElement(icon, { ...props })}
@@ -67,7 +67,7 @@ const MPButton = (props) => {
 
 MPButton.propTypes = {
   children: PropTypes.string.isRequired,
-  linkTo: PropTypes.string.isRequired,
+  goto: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(["light", "lightish", "dark", "darkish"]),
   icon: PropTypes.object,
 };

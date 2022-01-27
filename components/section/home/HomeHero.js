@@ -1,6 +1,5 @@
 import {} from "react";
 import PropTypes from "prop-types";
-import { Box, styled, ButtonGroup } from "@mui/material";
 import { MPHeroTitle, MPHero, MPButton, MPButtonGroup } from "components/ui";
 import SearchIcon from "@mui/icons-material/Search";
 import SendIcon from "@mui/icons-material/Send";
@@ -23,14 +22,14 @@ const HomeHero = (props) => {
 
       <MPButtonGroup>
         <MPButton
-          linkTo={button[0].linkTo}
+          goto={button[0].linkTo}
           variant={button[0].variant}
           icon={<SearchIcon />}
         >
           {button[0].title}
         </MPButton>
         <MPButton
-          linkTo={button[1].linkTo}
+          goto={button[1].linkTo}
           variant={button[1].variant}
           icon={<SendIcon />}
         >

@@ -3,7 +3,13 @@ import { Box, Switch, Typography, Container } from "@mui/material";
 const NavigationHeader = (props) => {
   const { platform, handleChange } = props;
   return (
-    <Box sx={{ backgroundColor: platform ? "primary.dark" : "primary.main" }}>
+    <Box
+      sx={{
+        backgroundImage: platform
+          ? "primary.dark"
+          : "radial-gradient(100% 100% at 100% 0, #5adaff 0, #0383C7 100%)",
+      }}
+    >
       <Container
         maxWidth="xs"
         sx={{

@@ -2,7 +2,7 @@ function pxToRem(value) {
   return `${value / 16}rem`;
 }
 
-function responsiveFontSizes({ xs, sm, md, lg }) {
+function responsiveFontSizes({ xs, sm, md, lg, xl }) {
   return {
     "@media (min-width:0px)": {
       fontSize: pxToRem(xs),
@@ -15,6 +15,9 @@ function responsiveFontSizes({ xs, sm, md, lg }) {
     },
     "@media (min-width:1200px)": {
       fontSize: pxToRem(lg),
+    },
+    "@media (min-width:1536px)": {
+      fontSize: pxToRem(xl),
     },
   };
 }
@@ -29,32 +32,36 @@ const typography = {
   fontWeightMedium: 600,
   fontWeightBold: 700,
   h1: {
+    // ? "BIG SUBTITLES" : MPTitle
     fontFamily: FONT_PRIMARY,
-    fontWeight: 600,
-    lineHeight: 1.25,
+    fontWeight: 700,
+    lineHeight: 1.1,
     fontSize: pxToRem(100),
-    ...responsiveFontSizes({ xs: 36, sm: 40, md: 48, lg: 64 }),
+    ...responsiveFontSizes({ xs: 64, sm: 72, md: 80, lg: 100, xl: 100 }),
   },
   h2: {
+    // ? "HERO TITLE" : MPHeroTitle
+
+    fontFamily: FONT_SECONDARY,
+    fontWeight: 600,
+    lineHeight: 1.3,
+    fontSize: pxToRem(64),
+    ...responsiveFontSizes({ xs: 36, sm: 40, md: 48, lg: 64, xl: 64 }),
+  },
+  h3: {
+    // ? "SECTION TITLE, heading" : MPTitle
     fontFamily: FONT_SECONDARY,
     fontWeight: 600,
     lineHeight: 1.1,
-    fontSize: pxToRem(64),
-    ...responsiveFontSizes({ xs: 32, sm: 36, md: 40, lg: 48 }),
-  },
-  h3: {
-    fontFamily: FONT_SECONDARY,
-    fontWeight: 600,
-    lineHeight: 1.4,
     fontSize: pxToRem(48),
-    ...responsiveFontSizes({ xs: 24, sm: 24, md: 28, lg: 32 }),
+    ...responsiveFontSizes({ xs: 32, sm: 36, md: 40, lg: 48, xl: 48 }),
   },
   h4: {
     fontFamily: FONT_TERTIARY,
     fontWeight: 300,
     lineHeight: 1.5,
     fontSize: pxToRem(32),
-    ...responsiveFontSizes({ xs: 18, sm: 20, md: 22, lg: 24 }),
+    ...responsiveFontSizes({ xs: 18, sm: 20, md: 24, lg: 28, xl: 32 }),
   },
   h5: {
     fontFamily: FONT_PRIMARY,
