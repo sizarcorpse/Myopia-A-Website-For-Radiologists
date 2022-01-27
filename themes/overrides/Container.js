@@ -4,6 +4,7 @@ export default function Container(theme) {
       styleOverrides: {
         root: {
           "&.MuiContainer-maxWidthLg": {
+            maxWidth: 1280,
             [theme.breakpoints.down("xs")]: {
               padding: theme.spacing(4, 2),
             },
@@ -21,7 +22,7 @@ export default function Container(theme) {
             },
           },
           "&.MuiContainer-maxWidthXs": {
-            maxWidth: 1200,
+            maxWidth: 1280,
             [theme.breakpoints.down("xs")]: {
               padding: theme.spacing(0, 2),
             },

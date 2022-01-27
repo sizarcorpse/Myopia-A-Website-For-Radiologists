@@ -13,7 +13,7 @@ function responsiveFontSizes({ xs, sm, md, lg, xl }) {
     "@media (min-width:900px)": {
       fontSize: pxToRem(md),
     },
-    "@media (min-width:1200px)": {
+    "@media (min-width:1280px)": {
       fontSize: pxToRem(lg),
     },
     "@media (min-width:1536px)": {

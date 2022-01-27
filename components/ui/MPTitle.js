@@ -6,8 +6,7 @@ const MpTitleStyled = styled(Box)(({ theme, alignment, isSubtitle }) => ({
   display: "flex",
   flexDirection: "column",
   marginBottom: "4px",
-  outline: "1px solid red",
-
+  width: "100%",
   "& .subtitle": {
     letterSpacing: 3,
     textTransform: "uppercase",
@@ -17,22 +16,19 @@ const MpTitleStyled = styled(Box)(({ theme, alignment, isSubtitle }) => ({
     },
   },
   "& .title": {
-    position: isSubtitle ? "absolute" : "relative",
     display: "block",
     width: "100%",
-    top: "58%",
-    left: alignment === "left" ? 0 : alignment === "center" ? "50%" : 0,
-    transform:
-      alignment === "left"
-        ? "none"
-        : alignment === "center"
-        ? "translate(-50%, 0%)"
-        : "none",
     textAlign: alignment,
+    marginTop: "-2.5rem",
+    [theme.breakpoints.down("lg")]: {
+      marginTop: "-2.1rem",
+    },
+    [theme.breakpoints.down("md")]: {
+      marginTop: "-1.8rem",
+    },
     [theme.breakpoints.down("sm")]: {
+      marginTop: "-1.6rem",
       textAlign: "center",
-      left: "50%",
-      transform: "translate(-50%, 0%)",
     },
   },
 }));

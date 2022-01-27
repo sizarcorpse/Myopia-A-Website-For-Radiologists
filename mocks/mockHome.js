@@ -22,6 +22,25 @@ const mockHome = {
       },
     ],
   },
+  introduction: {
+    photo: {
+      desktop:
+        "https://images.prismic.io/myopia/98cba092-c24f-433d-9aa3-eeac72061ce1_locallyownedimage.png",
+      mobile: "",
+      alt: "we are locally owned and operated",
+    },
+    title: "locally owned and operated.",
+    subtitle: "we are",
+    description:
+      "Our team of specialised radiologists, technicians and receptionists across our two sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional, and comfortable environments",
+    button: [
+      {
+        title: "Choose a Service",
+        linkTo: "/",
+        variant: "lightish",
+      },
+    ],
+  },
 };
 
 export default mockHome;
