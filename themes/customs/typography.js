@@ -71,12 +71,11 @@ const typography = {
     ...responsiveFontSizes({ xs: 18, sm: 18, md: 18, lg: 18 }),
   },
   h6: {
-    fontFamily: FONT_PRIMARY,
-    fontWeight: 300,
-    lineHeight: 28 / 18,
+    fontFamily: FONT_TERTIARY,
+    fontWeight: 700,
+    lineHeight: 1.5,
     fontSize: pxToRem(22),
-    fontWeight: 600,
-    ...responsiveFontSizes({ xs: 18, sm: 18, md: 18, lg: 18 }),
+    ...responsiveFontSizes({ xs: 18, sm: 18, md: 20, lg: 22, xl: 22 }),
   },
   subtitle1: {
     fontWeight: 600,
