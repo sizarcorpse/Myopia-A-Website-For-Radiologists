@@ -25,14 +25,14 @@ const Home = () => {
           <HomeIntroduction data={introduction} />
         </Container>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx={{ backgroundColor: "primary.light" }}>
         <Container maxWidth="lg">
-          <HomeServices data={services} />
+          <HomeOurTechnology data={technology} />
         </Container>
       </Grid>
       <Grid item xs={12}>
         <Container maxWidth="lg">
-          <HomeOurTechnology data={technology} />
+          <HomeServices data={services} />
         </Container>
       </Grid>
     </Grid>

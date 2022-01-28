@@ -8,6 +8,13 @@ const HomeIntroductionStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
   gap: theme.spacing(4),
+  [theme.breakpoints.down("lg")]: {
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: "932px",
+    margin: "0 auto",
+    gap: theme.spacing(4),
+  },
   [theme.breakpoints.down("md")]: {
     flexDirection: "column",
   },
