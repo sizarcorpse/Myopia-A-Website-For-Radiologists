@@ -98,9 +98,9 @@ const typography = {
     fontSize: pxToRem(14),
   },
   caption: {
-    fontWeight: 400,
+    fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(12),
+    fontSize: pxToRem(16),
   },
   overline: {
     fontWeight: 700,

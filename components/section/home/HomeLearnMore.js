@@ -54,10 +54,7 @@ const HomeLearnMore = (props) => {
             title="Myopia"
             id="video"
             width="100%"
-            height="100%"
-            maxWidth="565px"
-            minHeight="318px"
-            maxHeight="318px"
+            height="318px"
             src={data.video.externalUrl}
             frameBorder="0"
             allow="accelerometer, autoplay; encrypted-media; gyroscope; picture-in-picture"

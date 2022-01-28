@@ -7,10 +7,11 @@ import {
   HomeServices,
   HomeOurTechnology,
   HomeLearnMore,
+  HomeReviews,
 } from "components/section/home/";
 import { mockHome } from "mocks/";
 const Home = () => {
-  const { hero, introduction, services, technology, learn } = mockHome;
+  const { hero, introduction, services, technology, learn, review } = mockHome;
   return (
     <Grid component="main">
       <Head>
@@ -39,6 +40,11 @@ const Home = () => {
       <Grid item xs={12}>
         <Container maxWidth="lg">
           <HomeLearnMore data={learn} />
+        </Container>
+      </Grid>
+      <Grid item xs={12}>
+        <Container maxWidth="lg">
+          <HomeReviews data={review} />
         </Container>
       </Grid>
     </Grid>

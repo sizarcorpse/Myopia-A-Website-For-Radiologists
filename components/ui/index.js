@@ -6,3 +6,4 @@ export { default as MPTitle } from "./MPTitle";
 export { default as MPIconBox } from "./MPIconBox";
 export { default as MPSlider } from "./MPSlider";
 export { default as MPIconText } from "./MPIconText";
+export { default as MPReview } from "./MPReview";
