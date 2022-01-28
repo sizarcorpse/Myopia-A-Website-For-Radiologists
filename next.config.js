@@ -10,6 +10,6 @@ module.exports = {
 
 module.exports = {
   images: {
-    domains: ["images.prismic.io", "myopia.cdn.prismic.io"],
+    domains: ["images.prismic.io", "myopia.cdn.prismic.io", "www.youtube.com"],
   },
 };

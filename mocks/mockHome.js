@@ -148,6 +148,23 @@ const mockHome = {
       alt: "we are locally owned and operated",
     },
   },
+  learn: {
+    title: "Learn more about us",
+    subtitle: "Learn",
+    description:
+      "Our team of specialised radiologists, technicians and receptionists across our two sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional, and comfortable environments",
+    video: {
+      internalUrl: "",
+      externalUrl: "https://www.youtube.com/watch?v=2kPSl2vyu2Y",
+    },
+    button: [
+      {
+        title: "Learn More",
+        linkTo: "/",
+        variant: "lightish",
+      },
+    ],
+  },
 };
 
 export default mockHome;
