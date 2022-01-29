@@ -1,13 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import {
-  Box,
-  styled,
-  Typography,
-  Collapse,
-  Button,
-  useMediaQuery,
-} from "@mui/material";
+import { Box, styled, Typography, Collapse, Button } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 const MPDoctorStyled = styled(Box)(({ theme }) => ({
@@ -76,7 +69,6 @@ const MPDoctor = (props) => {
     item: { name, profilePhoto, qualification, excerpt, bio },
   } = props;
   const [expanded, setExpanded] = useState(false);
-  const matches = useMediaQuery("(max-width:600px)");
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -105,7 +97,7 @@ const MPDoctor = (props) => {
           <Typography variant="body1" color="primary.dark">
             <Typography variant="caption" color="primary.dark">
               Biography :
-            </Typography>{" "}
+            </Typography>
             {bio}
           </Typography>
         </Collapse>

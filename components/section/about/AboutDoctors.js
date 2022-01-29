@@ -1,18 +1,27 @@
 import {} from "react";
-import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
 import { MPDoctor } from "components/ui";
+
+const AboutDoctorsStyled = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(4),
+  justifyContent: "center",
+  alignItems: "center",
+}));
 
 const AboutDoctors = (props) => {
   const { data } = props;
 
   return (
-    <Box>
-      <MPDoctor item={data.doctorsList[0]}></MPDoctor>
-    </Box>
+    <AboutDoctorsStyled>
+      {data.doctorsList.map((doctor, index) => (
+        <Box key={index}>
+          <MPDoctor item={doctor} />
+        </Box>
+      ))}
+    </AboutDoctorsStyled>
   );
 };
-
-AboutDoctors.propTypes = {};
 
 export default AboutDoctors;
