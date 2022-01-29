@@ -41,7 +41,6 @@ const typography = {
   },
   h2: {
     // ? "HERO TITLE" : MPHeroTitle
-
     fontFamily: FONT_SECONDARY,
     fontWeight: 600,
     lineHeight: 1.3,
@@ -57,11 +56,11 @@ const typography = {
     ...responsiveFontSizes({ xs: 32, sm: 36, md: 40, lg: 48, xl: 48 }),
   },
   h4: {
-    fontFamily: FONT_TERTIARY,
-    fontWeight: 300,
+    fontFamily: FONT_PRIMARY,
+    fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(32),
-    ...responsiveFontSizes({ xs: 18, sm: 20, md: 24, lg: 28, xl: 32 }),
+    ...responsiveFontSizes({ xs: 20, sm: 20, md: 24, lg: 28, xl: 32 }),
   },
   h5: {
     fontFamily: FONT_PRIMARY,
