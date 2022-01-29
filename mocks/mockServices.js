@@ -88,7 +88,47 @@ const mockServices = {
       },
     ],
   },
-  why: {},
+  why: {
+    title: {
+      color1: "State of the art",
+      color2: "Technology",
+    },
+    description:
+      "Myopia Radiology uses the best CT technology on the market, Canon Aquilion Prime 160 Slice CT Scanner, a scanner that provides better care and safer imaging.",
+
+    benefits: [
+      {
+        icon: "https://images.prismic.io/myopia/87882026-2ec4-4f5f-9abc-9e46ca7eb042_89.png",
+        title: "Qualifierd doctors",
+        description:
+          "Reliable & EfficientFrom paediatric to bariatric, it is designed and automated to deliver high quality data.",
+      },
+      {
+        icon: "https://images.prismic.io/myopia/9c4b6b73-5123-432f-99d0-27b265b7de8c_004.png",
+        title: "Online enrollment",
+        description:
+          "Utilising PUREVision technology to improve imaging efficiency with up to 31% less dose.",
+      },
+      {
+        icon: "https://images.prismic.io/myopia/9170734e-42c9-4d38-af23-2954dcf8df02_002.png",
+        title: "Free consultation",
+        description:
+          "Simplified workflow providing consistent quality results.",
+      },
+      {
+        icon: "https://images.prismic.io/myopia/ef7d4568-7469-4473-9674-fd392006ef74_003.png",
+        title: "Mordern facilities",
+        description:
+          "Ultra low dose CT with the artificial intelligence AiCE assisted CT producing  diagnostic images.",
+      },
+    ],
+    photo: {
+      desktop:
+        "https://images.prismic.io/myopia/98cba092-c24f-433d-9aa3-eeac72061ce1_locallyownedimage.png",
+      mobile: "",
+      alt: "we are locally owned and operated",
+    },
+  },
 };
 
 export default mockServices;

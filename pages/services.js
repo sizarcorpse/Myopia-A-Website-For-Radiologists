@@ -1,9 +1,13 @@
 import Head from "next/head";
-import { Box, Grid, Container } from "@mui/material";
-import { ServicesHero, ServicesAllService } from "components/section/service/";
+import { Grid, Container } from "@mui/material";
+import {
+  ServicesHero,
+  ServicesAllService,
+  ServicesWhyUs,
+} from "components/section/service/";
 import { mockServices } from "mocks/";
 const services = () => {
-  const { hero, services } = mockServices;
+  const { hero, services, why } = mockServices;
 
   return (
     <Grid component="main">
@@ -18,6 +22,11 @@ const services = () => {
       <Grid item xs={12}>
         <Container maxWidth="lg">
           <ServicesAllService data={services} />
+        </Container>
+      </Grid>
+      <Grid item xs={12} sx={{ background: "#EDF1F6" }}>
+        <Container maxWidth="lg">
+          <ServicesWhyUs data={why} />
         </Container>
       </Grid>
     </Grid>
