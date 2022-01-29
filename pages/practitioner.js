@@ -1,10 +1,14 @@
 import Head from "next/head";
-import { Grid } from "@mui/material";
-import { PractitionerHero } from "components/section/practitioner/";
+import { Grid, Container } from "@mui/material";
+import {
+  PractitionerHero,
+  PractitionerServices,
+  PractitionerJoinUs,
+} from "components/section/practitioner/";
 import { mockPractitioner } from "mocks/";
 
 const PractitionerHome = () => {
-  const { hero } = mockPractitioner;
+  const { hero, services } = mockPractitioner;
   return (
     <Grid component="main">
       <Head>
@@ -14,6 +18,11 @@ const PractitionerHome = () => {
       </Head>
       <Grid item xs={12}>
         <PractitionerHero data={hero} />
+      </Grid>
+      <Grid item xs={12}>
+        <Container>
+          <PractitionerServices data={services} />
+        </Container>
       </Grid>
     </Grid>
   );

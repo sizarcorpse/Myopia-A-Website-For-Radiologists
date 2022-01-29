@@ -49,30 +49,30 @@ const ElevationScroll = (props) => {
   });
 };
 
-const getCookies = () => {
-  let cooks = Cookies.get("platform");
-  if (cooks === undefined) {
-    Cookies.set("platform", false);
-    let cooks = Cookies.get("platform");
-    return cooks === "true" ? true : cooks === "false" ? false : false;
-  } else {
-    return cooks === "true" ? true : cooks === "false" ? false : false;
-  }
-};
+// const getCookies = () => {
+//   let cooks = Cookies.get("platform");
+//   if (cooks === undefined) {
+//     Cookies.set("platform", false);
+//     let cooks = Cookies.get("platform");
+//     return cooks === "true" ? true : cooks === "false" ? false : false;
+//   } else {
+//     return cooks === "true" ? true : cooks === "false" ? false : false;
+//   }
+// };
 const Navigation = (props) => {
   const { children } = props;
   const router = useRouter();
-  const [platform, setPlatform] = useState(getCookies);
+  const [platform, setPlatform] = useState(false);
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
 
-  useEffect(() => {
-    Cookies.set("platform", platform);
-    if (platform === false) {
-      router.push("/");
-    } else if (platform === true) {
-      router.push("/practitioner");
-    }
-  }, [platform]);
+  // useEffect(() => {
+  //   Cookies.set("platform", platform);
+  //   if (platform === false) {
+  //     router.push("/");
+  //   } else if (platform === true) {
+  //     router.push("/practitioner");
+  //   }
+  // }, [platform]);
 
   const handleSwitchChange = (event) => {
     if (platform === false) {
