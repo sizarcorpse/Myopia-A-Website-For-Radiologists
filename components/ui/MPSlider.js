@@ -1,4 +1,4 @@
-import { useState, cloneElement, isValidElement } from "react";
+import { useState, cloneElement, isValidElement, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Box, styled, MobileStepper, useTheme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
@@ -33,14 +33,13 @@ const StepperStyled = styled(MobileStepper)(({ theme }) => ({
     transition: "all 500ms ease 0ms",
   },
 }));
-
 const MpSlider = autoPlay(SwipeableViews);
 
 const MPSlider = (props) => {
   const { items, mpComponent, align, gutter } = props;
   const [activeStep, setActiveStep] = useState(0);
+  const [maxSteps, setMaxSteps] = useState(items.length);
   const theme = useTheme();
-  const maxSteps = items.length;
 
   const handleStepChange = (step) => {
     setActiveStep(step);

@@ -50,7 +50,7 @@ const HomeLearnMore = (props) => {
           </MPButton>
         </Box>
         <Box className="video">
-          <iframe
+          {/* <iframe
             title="Myopia"
             id="video"
             width="100%"
@@ -59,7 +59,7 @@ const HomeLearnMore = (props) => {
             frameBorder="0"
             allow="accelerometer, autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
-          />
+          /> */}
         </Box>
       </Box>
     </HomeLearnMoreStyled>

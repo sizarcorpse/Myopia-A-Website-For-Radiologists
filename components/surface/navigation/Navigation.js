@@ -34,6 +34,7 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
 
 const ElevationScroll = (props) => {
   const { children, trigger } = props;
+
   return cloneElement(children, {
     elevation: trigger ? 1 : 0,
     sx: {
@@ -45,7 +46,6 @@ const ElevationScroll = (props) => {
         color: trigger ? "#2D3663" : "#EDF1F6",
       },
     },
-    trigger: trigger,
   });
 };
 

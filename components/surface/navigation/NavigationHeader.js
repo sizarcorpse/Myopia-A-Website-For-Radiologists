@@ -12,7 +12,7 @@ const NavigationHeader = (props) => {
     <Box
       sx={{
         backgroundImage: platform
-          ? "primary.dark"
+          ? "radial-gradient(100% 100% at 100% 0, #0383C7 0, #2D3663 100%)"
           : "radial-gradient(100% 100% at 100% 0, #5adaff 0, #0383C7 100%)",
       }}
     >
