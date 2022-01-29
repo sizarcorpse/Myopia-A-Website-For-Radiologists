@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, cloneElement } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
 import Cookies from "js-cookie";
@@ -15,14 +15,16 @@ import {
   Toolbar,
   Typography,
   useScrollTrigger,
-  Slide,
   Container,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
-
+import MenuIcon from "@mui/icons-material/Menu";
 const NavigationStyled = styled(Box)(({ theme }) => ({}));
-const AppBarStyled = styled(AppBar)(({ theme, isScroll }) => ({
+
+const AppBarStyled = styled(AppBar)(({ theme }) => ({
   backgroundColor: "transparent",
-  top: isScroll ? 0 : "auto",
+
   "& .websiteLogo": {
     a: {
       textDecoration: "none",
@@ -30,18 +32,22 @@ const AppBarStyled = styled(AppBar)(({ theme, isScroll }) => ({
   },
 }));
 
-function HideOnScroll(props) {
-  const { children } = props;
-  const trigger = useScrollTrigger({
-    threshold: 0,
+const ElevationScroll = (props) => {
+  const { children, trigger } = props;
+  return cloneElement(children, {
+    elevation: trigger ? 1 : 0,
+    sx: {
+      background: trigger ? "#EDF1F6" : "none",
+      top: trigger ? "0%" : 50,
+      transition: "top 250ms ease-in-out, background 250ms ease-in-out",
+      willChange: "top , background",
+      "& .navigationItems p": {
+        color: trigger ? "#2D3663" : "#EDF1F6",
+      },
+    },
+    trigger: trigger,
   });
-
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
+};
 
 const getCookies = () => {
   let cooks = Cookies.get("platform");
@@ -56,8 +62,8 @@ const getCookies = () => {
 const Navigation = (props) => {
   const { children } = props;
   const router = useRouter();
-  const [isScroll, setIsScroll] = useState(false);
   const [platform, setPlatform] = useState(getCookies);
+  const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
 
   useEffect(() => {
     Cookies.set("platform", platform);
@@ -68,16 +74,6 @@ const Navigation = (props) => {
     }
   }, [platform]);
 
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 0) {
-        setIsScroll(true);
-      } else {
-        setIsScroll(false);
-      }
-    });
-  }, []);
-
   const handleSwitchChange = (event) => {
     if (platform === false) {
       setPlatform(true);
@@ -86,12 +82,17 @@ const Navigation = (props) => {
     }
   };
 
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
   return (
     <NavigationStyled>
       <NavigationHeader handleChange={handleSwitchChange} platform={platform} />
 
-      <HideOnScroll {...props}>
-        <AppBarStyled {...isScroll} elevation={0}>
+      <ElevationScroll trigger={trigger}>
+        <AppBarStyled elevation={0}>
           <Toolbar sx={{ p: 0 }}>
             <Container
               maxWidth="xs"
@@ -100,23 +101,35 @@ const Navigation = (props) => {
               <Box className="websiteLogo" sx={{ flexGrow: 1 }}>
                 <Link href="/">
                   <a>
-                    <Typography variant="h3" color="primary.light">
+                    <Typography
+                      variant="h3"
+                      color={trigger ? "primary.dark" : "primary.light"}
+                    >
                       MYOPIA
                     </Typography>
                   </a>
                 </Link>
               </Box>
-              <Box className="navigationItems">
-                {platform === false ? (
-                  <PatientNavigation items={navigation.patient} />
-                ) : (
-                  <PractitionerNavigation items={navigation.practitioner} />
-                )}
-              </Box>
+
+              {matchesMD ? (
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <MenuIcon
+                    sx={{ color: trigger ? "primary.dark" : "primary.light" }}
+                  />
+                </Box>
+              ) : (
+                <Box className="navigationItems">
+                  {platform === false ? (
+                    <PatientNavigation items={navigation.patient} />
+                  ) : (
+                    <PractitionerNavigation items={navigation.practitioner} />
+                  )}
+                </Box>
+              )}
             </Container>
           </Toolbar>
         </AppBarStyled>
-      </HideOnScroll>
+      </ElevationScroll>
       <Box>{children}</Box>
     </NavigationStyled>
   );

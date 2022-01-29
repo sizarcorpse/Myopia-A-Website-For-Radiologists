@@ -3,7 +3,7 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import { Box, styled, Typography } from "@mui/material";
 
-const MPReviewStyled = styled(Box)(({ theme, noCL, noCpl }) => ({
+const MPReviewStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
@@ -68,6 +68,7 @@ const MPReview = (props) => {
               height={35}
               quality={100}
               priority={true}
+              alt="company logo"
             />
           </a>
         </Link>
@@ -81,7 +82,13 @@ const MPReview = (props) => {
       </Typography>
       <Box className="client">
         <Box className="clientImage">
-          <Image src={clientPhoto} width={60} height={60} quality={100} />
+          <Image
+            src={clientPhoto}
+            width={60}
+            height={60}
+            quality={100}
+            alt={clientName}
+          />
         </Box>
         <Typography
           variant="caption"

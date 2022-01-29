@@ -12,7 +12,7 @@ const MpSliderStyled = styled(Box)(({ theme }) => ({
   maxWidth: "100%",
   height: "auto",
   gap: theme.spacing(2),
-  padding: theme.spacing(2),
+  // padding: theme.spacing(2),
 }));
 
 const StepperStyled = styled(MobileStepper)(({ theme }) => ({
@@ -37,7 +37,7 @@ const StepperStyled = styled(MobileStepper)(({ theme }) => ({
 const MpSlider = autoPlay(SwipeableViews);
 
 const MPSlider = (props) => {
-  const { items, mpComponent, align } = props;
+  const { items, mpComponent, align, gutter } = props;
   const [activeStep, setActiveStep] = useState(0);
   const theme = useTheme();
   const maxSteps = items.length;
@@ -66,7 +66,7 @@ const MPSlider = (props) => {
               }
               alignItems="center"
               width="100%"
-              p={4}
+              p={gutter ? gutter : 4}
             >
               {Math.abs(activeStep - index) <= 2
                 ? isValidElement(mpComponent) &&
@@ -95,6 +95,7 @@ MPSlider.defaultProps = {
 
 MPSlider.propTypes = {
   align: PropTypes.string,
+  gutter: PropTypes.number,
   items: PropTypes.array.isRequired,
   mpComponent: PropTypes.element.isRequired,
 };

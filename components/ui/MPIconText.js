@@ -51,7 +51,7 @@ const MPIconText = (props) => {
         </Box>
       )}
       <Box className="contents">
-        <Typography variant="h6" color="primary.dark">
+        <Typography variant="h6" color="primary.dark" component="p">
           {title}
         </Typography>
         <Typography variant="body1" color="primary.dark">

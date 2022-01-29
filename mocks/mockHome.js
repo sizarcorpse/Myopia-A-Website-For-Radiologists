@@ -166,8 +166,8 @@ const mockHome = {
     ],
   },
   review: {
-    title: "Reviews",
-    subtitle: "What our patients say",
+    title: "What our patients say",
+    subtitle: "Reviews",
     reviews: [
       {
         companyLogo:
@@ -186,7 +186,7 @@ const mockHome = {
           "https://images.prismic.io/myopia/c664dc81-6c0b-4553-aff2-af7338b9f751_logo2.png",
         companyWebsite: "#",
         reviewContent:
-          "Lorem Ipsum is try. Lorem Ipsum has been the industry's  1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+          "Lorem Ipsum is try. Lorem Ipsum has been the industry's  1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.",
         clientName: "Henry Cavill",
         clientPosition: "Senior Writer",
         clientPhoto:

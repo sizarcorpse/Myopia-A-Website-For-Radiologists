@@ -1,4 +1,10 @@
-import { Box, Switch, Typography, Container } from "@mui/material";
+import {
+  Box,
+  Switch,
+  Typography,
+  Container,
+  FormControlLabel,
+} from "@mui/material";
 
 const NavigationHeader = (props) => {
   const { platform, handleChange } = props;
@@ -24,7 +30,13 @@ const NavigationHeader = (props) => {
         <Typography variant="body2" color="primary.light">
           patient
         </Typography>
-        <Switch checked={platform} onChange={handleChange} />
+
+        <Switch
+          checked={platform}
+          onChange={handleChange}
+          inputProps={{ "aria-label": "switching between platform" }}
+        />
+
         <Typography variant="body2" color="primary.light">
           practitioner
         </Typography>

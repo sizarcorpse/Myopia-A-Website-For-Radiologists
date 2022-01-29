@@ -15,7 +15,7 @@ const PatientNavigation = (props) => {
     <StackStyled direction="row" alignItems="center" gap={4}>
       {items.map((item, index) => (
         <Link href={item.url.path} key={index}>
-          <Typography variant="h6" component="p" color="primary.light">
+          <Typography variant="caption" component="p" color="primary.light">
             {item.title}
           </Typography>
         </Link>
