@@ -8,7 +8,7 @@ import {
 import { mockPractitioner } from "mocks/";
 
 const PractitionerHome = () => {
-  const { hero, services } = mockPractitioner;
+  const { hero, services, join } = mockPractitioner;
   return (
     <Grid component="main">
       <Head>
@@ -20,8 +20,13 @@ const PractitionerHome = () => {
         <PractitionerHero data={hero} />
       </Grid>
       <Grid item xs={12}>
-        <Container>
+        <Container maxWidth="lg">
           <PractitionerServices data={services} />
+        </Container>
+      </Grid>
+      <Grid item xs={12} sx={{ background: "#EDF1F6" }}>
+        <Container maxWidth="lg">
+          <PractitionerJoinUs data={join} />
         </Container>
       </Grid>
     </Grid>

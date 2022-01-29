@@ -69,9 +69,7 @@ const HomeOurTechnology = (props) => {
           <br></br>
           <span>{data.title.color2}</span>
         </Typography>
-        <Typography variant="body1" component="">
-          {data.description}
-        </Typography>
+        <Typography variant="body1">{data.description}</Typography>
 
         <Box className="technologies">
           {data.technologies.map((item, index) => (

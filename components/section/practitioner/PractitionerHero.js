@@ -16,6 +16,7 @@ const PractitionerHero = (props) => {
     <MPHero
       backgroundImageForDesktop={desktop}
       backgroundImageForMobile={mobile}
+      backgroundImagePosition="center center"
     >
       <MPHeroTitle heroTitle={title} heroDescription={description} />
 

@@ -5,9 +5,9 @@ const mockPractitioner = {
       "Our team of specialised radiologists, technicians and receptionists across our sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional and comfortable environments.",
     background: {
       desktop:
-        "https://images.unsplash.com/photo-1614308457932-e16d85c5d053?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2400&q=100",
+        "https://images.unsplash.com/photo-1630959302862-82cec6653d60?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=100",
       mobile:
-        "https://images.unsplash.com/photo-1614308459036-779d0dfe51ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=100",
+        "https://images.unsplash.com/photo-1630959302878-a30de73cdbb5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80",
     },
     button: [
       {
@@ -59,6 +59,45 @@ const mockPractitioner = {
         icon: "https://myopia.cdn.prismic.io/myopia/8a0d8d46-9600-4f74-bfab-fca90f3f778e_download.svg",
         title: "Download pdf Referral Form",
         linkTo: "#",
+      },
+    ],
+  },
+  join: {
+    title: "We perform 1 million Patient procedures each year",
+    description:
+      "Our Radiologists and staff are friendly, highly skilled and dedicated to providing a professional stress-free environment along with exceptional service to both patients and referring clinician alike. With the use of the latest radiology technology.",
+    photo: {
+      desktop:
+        "https://images.prismic.io/myopia/98cba092-c24f-433d-9aa3-eeac72061ce1_locallyownedimage.png",
+      mobile: "",
+      alt: "We perform 1 million Patient procedures each year",
+    },
+    button: [
+      {
+        title: "Join Us Today",
+        linkTo: "/",
+        variant: "darkish",
+      },
+    ],
+    benefits: [
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/ad6e8395-76c3-4481-83d0-15598d7f3a38_network+icon.svg",
+        title: "Network of clinics",
+        description:
+          "We offer a comprehensive range of services at our 5 locations throughout Victoria.",
+      },
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/e5c86cd2-2aca-4c89-9e09-4f808bc9c15c_patientcare_icon.svg",
+        title: "Patient care",
+        description:
+          "We take a patient focused approach to ensure our patients are well looked after and informed.",
+      },
+
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/7b22d93d-8ed4-46e1-8508-546e259285ea_expert_icon.svg",
+        title: "Expertise",
+        description:
+          "Our simplified workflow provides consistent quality results.",
       },
     ],
   },

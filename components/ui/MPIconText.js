@@ -3,41 +3,57 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import { Box, styled, Typography } from "@mui/material";
 
-const MpIconTextStyled = styled(Box)(({ theme, variant, alignItems }) => ({
-  display: "flex",
-  flexDirection: variant,
-  justifyContent: "flex-start",
-  alignItems: alignItems,
-  gap: theme.spacing(2),
-
-  maxWidth: "550px",
-
-  "& .image": {
-    flex: "1 0 calc(25% - 16px)",
-  },
-  "& .contents": {
-    flex: "1 1 calc(75% - 16px)",
+const MpIconTextStyled = styled(Box)(
+  ({ theme, variant, alignItems, alignItemsOnMobile }) => ({
     display: "flex",
-    flexDirection: "column",
+    flexDirection: variant,
     justifyContent: "flex-start",
     alignItems: alignItems,
     gap: theme.spacing(2),
-
-    "& p": {
-      textAlign: alignItems ? alignItems : "left",
+    maxWidth: "550px",
+    [theme.breakpoints.down("sm")]: {
+      alignItems: alignItemsOnMobile ? alignItemsOnMobile : alignItems,
     },
-  },
-}));
+
+    "& .image": {
+      flex: "1 0 calc(25% - 16px)",
+    },
+    "& .contents": {
+      flex: "1 1 calc(75% - 16px)",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "flex-start",
+      alignItems: alignItems,
+      gap: theme.spacing(2),
+      [theme.breakpoints.down("sm")]: {
+        alignItems: alignItemsOnMobile ? alignItemsOnMobile : alignItems,
+      },
+
+      "& p": {
+        textAlign: alignItems ? alignItems : "left",
+
+        [theme.breakpoints.down("sm")]: {
+          textAlign: alignItemsOnMobile ? alignItemsOnMobile : alignItems,
+        },
+      },
+    },
+  })
+);
 
 const MPIconText = (props) => {
   const {
     item: { icon, title, description },
     variant,
     alignItems,
+    alignItemsOnMobile,
   } = props;
 
   return (
-    <MpIconTextStyled variant={variant} alignItems={alignItems}>
+    <MpIconTextStyled
+      variant={variant}
+      alignItems={alignItems}
+      alignItemsOnMobile={alignItemsOnMobile}
+    >
       {icon && (
         <Box className="image">
           <Image
@@ -64,7 +80,8 @@ const MPIconText = (props) => {
 
 MPIconText.defaultProps = {
   variant: "column",
-  alignment: "left",
+  alignItems: "flex-start",
+  alignItemsOnMobile: "flex-start",
 };
 
 MPIconText.propTypes = {
@@ -75,6 +92,7 @@ MPIconText.propTypes = {
   }).isRequired,
   variant: PropTypes.oneOf(["column", "row"]),
   alignItems: PropTypes.oneOf(["flex-start", "center"]),
+  alignItemsOnMobile: PropTypes.oneOf(["flex-start", "center"]),
 };
 
 export default MPIconText;
