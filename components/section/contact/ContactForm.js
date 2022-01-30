@@ -8,16 +8,29 @@ const ContactFormStyled = styled(Box)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "flex-start",
   gap: theme.spacing(4),
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+  },
 
   "& .contents": {
-    flex: `1 1 calc(50% - ${theme.spacing(4)})`,
+    flex: `1 1 calc(50% - 32px)`,
+    maxWidth: "calc(50% - 32px)",
     display: "flex",
     flexDirection: "column",
     gap: theme.spacing(4),
+    [theme.breakpoints.down("md")]: {
+      maxWidth: "100%",
+      justifyContent: "center",
+    },
+    "& .description": {
+      maxWidth: "65ch",
+      [theme.breakpoints.down("sm")]: {
+        textAlign: "center",
+      },
+    },
   },
 }));
 const FormBoxStyled = styled(Box)(({ theme }) => ({
-  flex: `1 1 calc(50% - ${theme.spacing(4)})`,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -27,10 +40,13 @@ const FormBoxStyled = styled(Box)(({ theme }) => ({
   borderRadius: 4,
   boxShadow:
     "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;",
+  [theme.breakpoints.down("md")]: {
+    margin: "0 auto",
+  },
   [theme.breakpoints.down("sm")]: {
     padding: theme.spacing(4),
   },
-  "& .titles": {
+  "& .formTitle": {
     textAlign: "center",
   },
 }));
@@ -44,13 +60,18 @@ const ContactForm = (props) => {
     <ContactFormStyled>
       <Box className="contents">
         <MPTitle title={header.title} subtitle={header.subtitle} />
-        <Typography variant="body1" className="titles">
+        <Typography
+          variant="body1"
+          color="primary.dark"
+          className="description"
+        >
           {header.description}
         </Typography>
         <MPSlider mpComponent={<MPAddress />} items={locations} gutter="0" />
       </Box>
+
       <FormBoxStyled>
-        <Box className="titles">
+        <Box className="formTitle">
           <Typography variant="caption" component="p" color="primary.dark">
             Have an inquiry?
           </Typography>

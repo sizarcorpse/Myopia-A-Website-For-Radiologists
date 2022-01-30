@@ -46,7 +46,7 @@ const MPSlider = (props) => {
   };
 
   return (
-    <MpSliderStyled>
+    <MpSliderStyled className="MpSliderStyled">
       <MpSlider
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={activeStep}

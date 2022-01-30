@@ -12,6 +12,7 @@ const MPAddressStyled = styled(Box)(({ theme }) => ({
   alignItems: "flex-start",
   justifyContent: "flex-start",
   gap: theme.spacing(3),
+
   "& .information": {
     display: "flex",
     flexDirection: "column",
