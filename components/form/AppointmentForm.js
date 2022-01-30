@@ -182,7 +182,6 @@ const AppointmentForm = (props) => {
                       autoComplete="lastName"
                       name="lastName"
                       variant="outlined"
-                      fullWidth
                       type="text"
                       id="lastName"
                       label="Last Name"
@@ -200,7 +199,6 @@ const AppointmentForm = (props) => {
                       autoComplete="email"
                       name="email"
                       variant="outlined"
-                      fullWidth
                       id="email"
                       type="email"
                       label="Email Address"
@@ -218,7 +216,6 @@ const AppointmentForm = (props) => {
                       autoComplete="tel"
                       name="phone"
                       variant="outlined"
-                      fullWidth
                       id="phone"
                       type="tel"
                       label="Contact Number"

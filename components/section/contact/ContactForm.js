@@ -1,7 +1,7 @@
 import {} from "react";
 import { Box, styled, Typography } from "@mui/material";
 import { AppointmentForm } from "components/form";
-import { MPTitle } from "components/ui";
+import { MPTitle, MPAddress } from "components/ui";
 
 const ContactFormStyled = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -43,6 +43,8 @@ const ContactForm = (props) => {
         <Typography variant="body1" className="titles">
           {header.description}
         </Typography>
+
+        <MPAddress data={locations} />
       </Box>
       <FormBoxStyled>
         <Box className="titles">
