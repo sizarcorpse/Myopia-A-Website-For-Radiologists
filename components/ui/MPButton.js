@@ -70,6 +70,7 @@ MPButton.propTypes = {
   goto: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(["light", "lightish", "dark", "darkish"]),
   icon: PropTypes.object,
+  type: PropTypes.string,
 };
 
 export default MPButton;

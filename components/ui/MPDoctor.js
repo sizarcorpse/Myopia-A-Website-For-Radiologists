@@ -96,7 +96,7 @@ const MPDoctor = (props) => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <Typography variant="body1" color="primary.dark">
             <Typography variant="caption" color="primary.dark">
-              Biography :
+              {`Biography : `}
             </Typography>
             {bio}
           </Typography>
