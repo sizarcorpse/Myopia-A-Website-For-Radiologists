@@ -17,7 +17,44 @@ const mockContact = {
       description:
         "We are near to you. You can now request your appointment with us via phone, email, or visit one of our available locations.",
     },
-    locations: [{}],
+    locations: [
+      {
+        name: "Velen",
+        information: {
+          phone: {
+            label: "(+666) 666 33 666",
+            value: "+66666633666",
+          },
+          fax: {
+            label: "(+666) 666 13 666",
+            value: "+66666613666",
+          },
+          email: {
+            label: "velen@myopia.com.dark",
+            value: "velen@myopia.com.dark",
+          },
+          address: "13  Gors Velen, Velen",
+        },
+      },
+      {
+        name: "Novigrad",
+        information: {
+          phone: {
+            label: "(+666) 666 33 666",
+            value: "+66666633666",
+          },
+          fax: {
+            label: "(+666) 666 13 666",
+            value: "+66666613666",
+          },
+          email: {
+            label: "novigrad@myopia.com.dark",
+            value: "novigrad@myopia.com.dark",
+          },
+          address: "Dark Soul Novigrad, Novigrad",
+        },
+      },
+    ],
     choices: {
       services: [
         {

@@ -1,15 +1,19 @@
 import {} from "react";
 import { Box, styled, Typography } from "@mui/material";
 import { AppointmentForm } from "components/form";
-import { MPTitle, MPAddress } from "components/ui";
+import { MPTitle, MPAddress, MPSlider } from "components/ui";
 
 const ContactFormStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "row",
+  alignItems: "flex-start",
   gap: theme.spacing(4),
 
   "& .contents": {
     flex: `1 1 calc(50% - ${theme.spacing(4)})`,
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.spacing(4),
   },
 }));
 const FormBoxStyled = styled(Box)(({ theme }) => ({
@@ -43,8 +47,7 @@ const ContactForm = (props) => {
         <Typography variant="body1" className="titles">
           {header.description}
         </Typography>
-
-        <MPAddress data={locations} />
+        <MPSlider mpComponent={<MPAddress />} items={locations} gutter="0" />
       </Box>
       <FormBoxStyled>
         <Box className="titles">

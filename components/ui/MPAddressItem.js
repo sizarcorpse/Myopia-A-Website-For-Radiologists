@@ -28,6 +28,8 @@ const setHref = (value, type) => {
       return `tel:${value}`;
     case "email":
       return `mailto:${value}`;
+    case "fax":
+      return `fax:${value}`;
     default:
       return undefined;
   }
@@ -50,7 +52,7 @@ MPAddressItem.propTypes = {
   icon: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
-  type: PropTypes.oneOf(["tel", "email"]),
+  type: PropTypes.oneOf(["tel", "email", "fax"]),
 };
 
 export default MPAddressItem;
