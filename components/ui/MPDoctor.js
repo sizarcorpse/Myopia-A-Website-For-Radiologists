@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Box, styled, Typography, Collapse, Button } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-const MPDoctorStyled = styled(Box)(({ theme }) => ({
+const MPDoctorStyled = styled(Box)(({ theme, expanded }) => ({
   display: "flex",
   flexDirection: "row",
   gap: theme.spacing(4),
@@ -23,20 +23,17 @@ const MPDoctorStyled = styled(Box)(({ theme }) => ({
 
   "& .image": {
     flex: `1 1 calc(220px - 32px)`,
-    width: 220,
-    height: 218,
+    width: "220px",
+    aspectRatio: "auto  1 / 1",
+    overflow: "hidden",
     [theme.breakpoints.down("sm")]: {
       width: "100%",
-      height: "280px",
     },
     "& > img": {
       borderRadius: theme.spacing(1),
       width: "100%",
       height: "100%",
-      [theme.breakpoints.down("sm")]: {
-        width: "100%",
-        objectFit: "cover",
-      },
+      objectFit: "cover",
     },
   },
   "& .contents": {
@@ -74,7 +71,7 @@ const MPDoctor = (props) => {
     setExpanded(!expanded);
   };
   return (
-    <MPDoctorStyled>
+    <MPDoctorStyled expanded={expanded}>
       <Box className="image">
         <img src={profilePhoto} alt={name} />
       </Box>

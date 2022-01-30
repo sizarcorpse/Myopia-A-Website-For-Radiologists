@@ -3,8 +3,17 @@ import { Box, styled, Typography } from "@mui/material";
 import { AppointmentForm } from "components/form";
 import { MPTitle } from "components/ui";
 
-const ContactFormStyled = styled(Box)(({ theme }) => ({}));
+const ContactFormStyled = styled(Box)(({ theme }) => ({
+  display: "flex",
+  flexDirection: "row",
+  gap: theme.spacing(4),
+
+  "& .contents": {
+    flex: `1 1 calc(50% - ${theme.spacing(4)})`,
+  },
+}));
 const FormBoxStyled = styled(Box)(({ theme }) => ({
+  flex: `1 1 calc(50% - ${theme.spacing(4)})`,
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -24,12 +33,17 @@ const FormBoxStyled = styled(Box)(({ theme }) => ({
 
 const ContactForm = (props) => {
   const {
-    data: { titles, locations, choices },
+    data: { header, locations, choices },
   } = props;
 
   return (
     <ContactFormStyled>
-      <Box></Box>
+      <Box className="contents">
+        <MPTitle title={header.title} subtitle={header.subtitle} />
+        <Typography variant="body1" className="titles">
+          {header.description}
+        </Typography>
+      </Box>
       <FormBoxStyled>
         <Box className="titles">
           <Typography variant="caption" component="p" color="primary.dark">

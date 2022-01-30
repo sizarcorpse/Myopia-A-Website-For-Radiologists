@@ -11,7 +11,12 @@ const mockContact = {
     },
   },
   contact: {
-    titles: { title: "Contact Us", subtitle: "We are here to help" },
+    header: {
+      title: "Call us or visit us!",
+      subtitle: "Reach",
+      description:
+        "We are near to you. You can now request your appointment with us via phone, email, or visit one of our available locations.",
+    },
     locations: [{}],
     choices: {
       services: [
