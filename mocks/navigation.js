@@ -53,7 +53,7 @@ const navigation = {
       slug: "support",
       url: {
         root: "",
-        path: "/support",
+        path: "/practitioner",
       },
     },
     {

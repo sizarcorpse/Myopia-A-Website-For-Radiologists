@@ -33,7 +33,7 @@ const mockPractitioner = {
       {
         icon: "https://myopia.cdn.prismic.io/myopia/1f713d18-d1bf-4d82-adaa-086a31440f7d_noun_details_639421+1.svg",
         title: "Break Glass",
-        linkTo: "#",
+        linkTo: "/break-glass",
       },
       {
         icon: "https://myopia.cdn.prismic.io/myopia/46770b37-80b8-44f8-a7de-0b9ae98b7c6a_Ctscan_icon.svg",
