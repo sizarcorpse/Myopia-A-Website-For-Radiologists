@@ -27,7 +27,7 @@ const OnlineImaging = (props) => {
           <OnlineImageFeature data={features} />
         </Container>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sx={{ background: "#EDF1F6" }}>
         <Container>
           <OnlineImageFaq data={faqs} />
         </Container>
