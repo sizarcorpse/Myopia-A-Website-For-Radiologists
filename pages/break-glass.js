@@ -8,7 +8,7 @@ import {
 import { mockBreakGlass } from "mocks/";
 
 const BreakGlass = (props) => {
-  const { hero, introduction } = mockBreakGlass;
+  const { hero, introduction, howToUse } = mockBreakGlass;
 
   return (
     <Grid component="main">
@@ -23,6 +23,11 @@ const BreakGlass = (props) => {
       <Grid item xs={12}>
         <Container>
           <BreakGlassIntroduction data={introduction} />
+        </Container>
+      </Grid>
+      <Grid item xs={12} sx={{ background: "#EDF1F6" }}>
+        <Container>
+          <BreakGlassAccess data={howToUse} />
         </Container>
       </Grid>
     </Grid>

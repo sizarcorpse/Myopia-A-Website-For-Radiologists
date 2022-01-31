@@ -70,9 +70,11 @@ const MPIconText = (props) => {
         <Typography variant="h6" color="primary.dark" component="p">
           {title}
         </Typography>
-        <Typography variant="body1" color="primary.dark">
-          {description}
-        </Typography>
+        {description && (
+          <Typography variant="body1" color="primary.dark">
+            {description}
+          </Typography>
+        )}
       </Box>
     </MpIconTextStyled>
   );
@@ -87,8 +89,8 @@ MPIconText.defaultProps = {
 MPIconText.propTypes = {
   item: PropTypes.shape({
     icon: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
   }).isRequired,
   variant: PropTypes.oneOf(["column", "row"]),
   alignItems: PropTypes.oneOf(["flex-start", "center"]),

@@ -22,6 +22,36 @@ const mockBreakGlass = {
     description:
       "Myopia has now enabled the Break-Glass feature within Vision Radiology Connect and Inteleviewer. This allows you to access your patients studies on those occasions when you weren’t the originating referrer.",
   },
+  howToUse: {
+    steps: [
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/2c2d0e0c-9c94-4f3f-a426-c896b5c1f8c2_icon.svg",
+        title: "1. Click on padlock icon to access break glass",
+      },
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/85e19836-d4e9-4aff-a062-4d228bd1b839_accept.svg",
+        title: "2. Accept the terms of confidentiality agreement",
+      },
+
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/7eb61c43-be80-4cbc-bdac-2412c84baa28_patient+id.svg",
+        title: "3. Enter the patients ID or patient name and DOB",
+      },
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/ec3adfb9-4199-4636-8a46-cc8dd41ed95b_chewck+patient+icon.svg",
+        title: "4. Click 'check patient'",
+      },
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/9f779e2f-f0d2-4062-a3b4-a38895376a1e_access+icon.svg",
+        title: "5. Access patient studies",
+      },
+
+      {
+        icon: "https://myopia.cdn.prismic.io/myopia/dd0ab6cf-1ca0-45f8-9870-cc9d481b10d0_visit+us+icon.svg",
+        title: "6. Access patient studies",
+      },
+    ],
+  },
 };
 
 export default mockBreakGlass;
