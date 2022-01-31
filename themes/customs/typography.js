@@ -63,11 +63,11 @@ const typography = {
     ...responsiveFontSizes({ xs: 20, sm: 20, md: 24, lg: 28, xl: 32 }),
   },
   h5: {
-    fontFamily: FONT_PRIMARY,
-    fontWeight: 400,
+    fontFamily: FONT_TERTIARY,
+    fontWeight: 500,
     lineHeight: 1.5,
-    fontSize: pxToRem(28),
-    ...responsiveFontSizes({ xs: 18, sm: 18, md: 18, lg: 18 }),
+    fontSize: pxToRem(24),
+    ...responsiveFontSizes({ xs: 20, sm: 20, md: 22, lg: 24, xl: 24 }),
   },
   h6: {
     fontFamily: FONT_TERTIARY,

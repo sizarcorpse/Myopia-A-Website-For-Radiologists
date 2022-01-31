@@ -1,11 +1,18 @@
 import {} from "react";
 import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
+import { MPAccordion } from "components/ui";
+
+const OnlineImageFaqStyled = styled(Box)(({ theme }) => ({}));
 
 const OnlineImageFaq = (props) => {
-  const {} = props;
+  const { data } = props;
 
-  return <Box></Box>;
+  return (
+    <OnlineImageFaqStyled>
+      <MPAccordion items={data} />
+    </OnlineImageFaqStyled>
+  );
 };
 
 OnlineImageFaq.propTypes = {};

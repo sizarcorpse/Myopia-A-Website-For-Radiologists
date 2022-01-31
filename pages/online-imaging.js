@@ -9,7 +9,7 @@ import {
 import { mockOnlineImage } from "mocks/";
 
 const OnlineImaging = (props) => {
-  const { hero, introduction, features } = mockOnlineImage;
+  const { hero, introduction, features, faqs } = mockOnlineImage;
 
   return (
     <Grid component="main">
@@ -25,6 +25,11 @@ const OnlineImaging = (props) => {
         <Container>
           <OnlineImageIntroduction data={introduction} />
           <OnlineImageFeature data={features} />
+        </Container>
+      </Grid>
+      <Grid item xs={12}>
+        <Container>
+          <OnlineImageFaq data={faqs} />
         </Container>
       </Grid>
     </Grid>
