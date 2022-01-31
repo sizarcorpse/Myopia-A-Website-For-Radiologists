@@ -48,7 +48,7 @@ const mockPractitioner = {
       {
         icon: "https://myopia.cdn.prismic.io/myopia/1ac46595-1413-4da6-b81a-69e5db70263e_noun_online+picture_3693647.svg",
         title: "Online Image Details",
-        linkTo: "#",
+        linkTo: "/online-imaging",
       },
       {
         icon: "https://myopia.cdn.prismic.io/myopia/f151a159-f4a0-4e68-94ff-57e8bc88bcad_noun_medical+insurance_241166+1.svg",

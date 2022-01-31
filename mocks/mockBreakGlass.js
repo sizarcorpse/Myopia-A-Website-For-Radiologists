@@ -2,7 +2,7 @@ const mockBreakGlass = {
   hero: {
     title: "Break Glass",
     description:
-      "Our team of specialised radiologists, technicians and receptionists across our two sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional, and comfortable environments.",
+      "Our team of specialized radiologists, technicians and receptionists across our two sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional, and comfortable environments.",
     background: {
       desktop:
         "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2400&q=100",
@@ -15,12 +15,12 @@ const mockBreakGlass = {
       desktop:
         "https://images.prismic.io/myopia/757ef659-9e6c-4941-be9a-96c2a1a87732_Break+glass+img.png",
       mobile: "",
-      alt: "self serve with glass-break",
+      alt: "Online Imaging Details",
     },
-    title: "With Break-Glass",
-    subtitle: "Self serve",
+    title: "Imaging Details",
+    subtitle: "online",
     description:
-      "Myopia has now enabled the Break-Glass feature within Vision Radiology Connect and Inteleviewer. This allows you to access your patients studies on those occasions when you weren’t the originating referrer.",
+      "If you have a current Vision Radiology Connect account, you can access our digital imaging in a number of ways. To apply for an account click here. If you would like us to set up an account, simply call our office on (33) 666 13 666 and we will attend to it.",
   },
   howToUse: {
     steps: [

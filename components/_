@@ -10,18 +10,16 @@ const MpIconTextStyled = styled(Box)(
     justifyContent: "flex-start",
     alignItems: alignItems,
     gap: theme.spacing(2),
-    maxWidth: "768px",
+    maxWidth: "550px",
     [theme.breakpoints.down("sm")]: {
-      flexDirection: variant === "row" ? "column" : "column",
       alignItems: alignItemsOnMobile ? alignItemsOnMobile : alignItems,
-      justifyContent: alignItemsOnMobile,
     },
 
     "& .image": {
-      flex: "1 0 calc(91px - 16px)",
+      flex: "1 0 calc(25% - 16px)",
     },
     "& .contents": {
-      flex: "1 1 calc(100% - 107px)",
+      flex: "1 1 calc(75% - 16px)",
       display: "flex",
       flexDirection: "column",
       justifyContent: "flex-start",
@@ -33,6 +31,7 @@ const MpIconTextStyled = styled(Box)(
 
       "& p": {
         textAlign: alignItems ? alignItems : "left",
+
         [theme.breakpoints.down("sm")]: {
           textAlign: alignItemsOnMobile ? alignItemsOnMobile : alignItems,
         },
