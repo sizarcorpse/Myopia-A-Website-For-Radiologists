@@ -13,14 +13,14 @@ const mockBreakGlass = {
   introduction: {
     photo: {
       desktop:
-        "https://images.prismic.io/myopia/98cba092-c24f-433d-9aa3-eeac72061ce1_locallyownedimage.png",
+        "https://images.prismic.io/myopia/757ef659-9e6c-4941-be9a-96c2a1a87732_Break+glass+img.png",
       mobile: "",
-      alt: "we are locally owned and operated",
+      alt: "self serve with glass-break",
     },
-    title: "locally owned and operated.",
-    subtitle: "we are",
+    title: "With Break-Glass",
+    subtitle: "Self serve",
     description:
-      "Our team of specialised radiologists, technicians and receptionists across our two sites are committed to providing patients and their referring clinicians with the highest standards of care in our modern, professional, and comfortable environments",
+      "Myopia has now enabled the Break-Glass feature within Vision Radiology Connect and Inteleviewer. This allows you to access your patients studies on those occasions when you weren’t the originating referrer.",
   },
 };
 

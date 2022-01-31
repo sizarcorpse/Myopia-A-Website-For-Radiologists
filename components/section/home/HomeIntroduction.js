@@ -1,4 +1,3 @@
-import {} from "react";
 import PropTypes from "prop-types";
 import Image from "next/image";
 import { Box, styled, Typography } from "@mui/material";
