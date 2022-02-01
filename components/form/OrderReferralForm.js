@@ -10,7 +10,7 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import { validationSchema } from "./AppointmentFormValidator";
+import { validationSchema } from "./OrderReferralFormValidator";
 import SendIcon from "@mui/icons-material/Send";
 const TextFieldStyled = styled(TextField)(({ theme }) => ({
   "& .MuiInputLabel-root": {
@@ -22,18 +22,18 @@ const TextFieldStyled = styled(TextField)(({ theme }) => ({
     borderRadius: 4,
 
     "& fieldset": {
-      backgroundColor: "transparent",
-      borderColor: theme.palette.primary.main,
+      backgroundColor: theme.palette.common.white,
+      borderColor: theme.palette.primary.dark,
     },
     "&:hover": {
       "& fieldset.MuiOutlinedInput-notchedOutline": {
-        borderColor: theme.palette.primary.dark,
+        borderColor: theme.palette.primary.main,
       },
     },
     "&.Mui-focused": {
       "& fieldset.MuiOutlinedInput-notchedOutline": {
         borderWidth: "1px",
-        borderColor: theme.palette.primary.dark,
+        borderColor: theme.palette.primary.main,
       },
     },
   },
@@ -45,17 +45,17 @@ const TextAreaStyled = styled(TextareaAutosize)(({ theme }) => ({
   padding: theme.spacing(1),
   borderRadius: 4,
   outline: "none",
-  borderColor: theme.palette.primary.main,
+  borderColor: theme.palette.primary.dark,
   fontSize: theme.typography.body1.fontSize,
   fontFamily: theme.typography.body1.fontFamily,
   fontWeight: theme.typography.body1.fontWeight,
-  backgroundColor: "transparent",
+  backgroundColor: theme.palette.common.white,
   "&::placeholder": {
     textOverflow: "ellipsis",
     color: theme.palette.primary.dark,
   },
   "&:hover": {
-    borderColor: theme.palette.primary.dark,
+    borderColor: theme.palette.primary.main,
   },
   "&:focus-visible ": {
     outline: "none",
@@ -101,25 +101,23 @@ const MpButtonStyled = styled(Button)(({ theme, variant, isLight }) => ({
   },
 }));
 
-const AppointmentForm = (props) => {
+const OrderReferralForm = (props) => {
   const {
-    choices: { locations, services },
+    choices: { types },
   } = props;
 
   const initialValues = {
-    firstName: "",
-    lastName: "",
-    email: "",
+    referrerName: "",
+    practiceName: "",
     phone: "",
-    service: "",
-    location: "",
+    type: "",
     contactMessage: "",
   };
   const onSubmit = async (values, { resetForm }) => {
-    const { firstName, lastName, email, phone, service, location } = values;
+    const { referrerName, practiceName, phone, type, contactMessage } = values;
 
     try {
-      console.log(firstName, lastName, email, phone, service, location);
+      console.log(referrerName, practiceName, phone, type, contactMessage);
     } catch (e) {}
   };
   return (
@@ -136,40 +134,20 @@ const AppointmentForm = (props) => {
           return (
             <Form>
               <Grid container spacing={3} align="center">
-                <Grid item xxs={12}>
-                  <FormControl fullWidth>
-                    <TextFieldStyled
-                      error={touched.location && Boolean(errors.location)}
-                      id="location"
-                      name="location"
-                      select
-                      label="Select Location"
-                      value={values.location}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      variant="outlined"
-                      size="small"
-                    >
-                      {locations.map((option) => (
-                        <MenuItem key={option.value} value={option.value}>
-                          {option.label}
-                        </MenuItem>
-                      ))}
-                    </TextFieldStyled>
-                  </FormControl>
-                </Grid>
                 <Grid item xxs={12} sm={6}>
                   <FormControl fullWidth>
                     <TextFieldStyled
-                      error={touched.firstName && Boolean(errors.firstName)}
-                      autoComplete="firstName"
-                      name="firstName"
+                      error={
+                        touched.referrerName && Boolean(errors.referrerName)
+                      }
+                      autoComplete="referrerName"
+                      name="referrerName"
                       variant="outlined"
-                      id="firstName"
-                      label="First Name"
+                      id="referrerName"
+                      label="Referrer Name"
                       type="text"
                       size="small"
-                      value={values.firstName}
+                      value={values.referrerName}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -178,32 +156,18 @@ const AppointmentForm = (props) => {
                 <Grid item xxs={12} sm={6}>
                   <FormControl fullWidth>
                     <TextFieldStyled
-                      error={touched.lastName && Boolean(errors.lastName)}
-                      autoComplete="lastName"
-                      name="lastName"
+                      error={
+                        touched.practiceName && Boolean(errors.practiceName)
+                      }
+                      autoComplete="practiceName"
+                      name="practiceName"
                       variant="outlined"
+                      fullWidth
                       type="text"
-                      id="lastName"
-                      label="Last Name"
+                      id="practiceName"
+                      label="Practice Name"
                       size="small"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                    />
-                  </FormControl>
-                </Grid>
-                <Grid item xxs={12} sm={6}>
-                  <FormControl fullWidth>
-                    <TextFieldStyled
-                      error={touched.email && Boolean(errors.email)}
-                      autoComplete="email"
-                      name="email"
-                      variant="outlined"
-                      id="email"
-                      type="email"
-                      label="Email Address"
-                      size="small"
-                      value={values.email}
+                      value={values.practiceName}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
@@ -216,10 +180,10 @@ const AppointmentForm = (props) => {
                       autoComplete="tel"
                       name="phone"
                       variant="outlined"
+                      fullWidth
                       id="phone"
                       type="tel"
-                      label="Contact Number"
-                      placeholder="1 666 333 9999"
+                      label="Phone Number"
                       size="small"
                       value={values.phone}
                       onChange={handleChange}
@@ -227,20 +191,22 @@ const AppointmentForm = (props) => {
                     />
                   </FormControl>
                 </Grid>
-                <Grid item xxs={12}>
+
+                <Grid item xxs={12} sm={6}>
                   <FormControl fullWidth>
                     <TextFieldStyled
-                      error={touched.service && Boolean(errors.service)}
-                      id="service"
-                      name="service"
+                      error={touched.type && Boolean(errors.type)}
+                      id="type"
+                      name="type"
                       select
-                      label="Select Service"
-                      value={values.service}
+                      fullWidth
+                      label="Select type"
+                      value={values.type}
                       onChange={handleChange}
                       variant="outlined"
                       size="small"
                     >
-                      {services.map((option) => (
+                      {types.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
                         </MenuItem>
@@ -248,7 +214,8 @@ const AppointmentForm = (props) => {
                     </TextFieldStyled>
                   </FormControl>
                 </Grid>
-                <Grid item xxs={12}>
+
+                <Grid item xxs={12} sm={12}>
                   <FormControl
                     error={
                       touched.contactMessage && Boolean(errors.contactMessage)
@@ -285,21 +252,21 @@ const AppointmentForm = (props) => {
   );
 };
 
-AppointmentForm.propTypes = {
-  choices: PropTypes.shape({
-    locations: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    services: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ),
-  }).isRequired,
-};
+// OrderReferralForm.propTypes = {
+//   choices: PropTypes.shape({
+//     locations: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         value: PropTypes.string.isRequired,
+//         label: PropTypes.string.isRequired,
+//       })
+//     ).isRequired,
+//     services: PropTypes.arrayOf(
+//       PropTypes.shape({
+//         value: PropTypes.string.isRequired,
+//         label: PropTypes.string.isRequired,
+//       })
+//     ),
+//   }).isRequired,
+// };
 
-export default AppointmentForm;
+export default OrderReferralForm;

@@ -1,5 +1,6 @@
 const breakpoints = {
   values: {
+    xxs: 0,
     xs: 420,
     sm: 600,
     md: 900,

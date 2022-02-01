@@ -6,3 +6,4 @@ export { default as mockServices } from "./mockServices";
 export { default as mockContact } from "./mockContact";
 export { default as mockBreakGlass } from "./mockBreakGlass";
 export { default as mockOnlineImage } from "./mockOnlineImage";
+export { default as mockReferral } from "./mockReferral";
