@@ -83,7 +83,7 @@ const MpButtonStyled = styled(Button)(({ theme, variant, isLight }) => ({
   border: 0,
   borderRadius: 6,
   backgroundImage:
-    "radial-gradient(100% 100% at 100% 0, #5adaff 0, #0383C7 100%)",
+    "radial-gradient(100% 100% at 100% 0, #0383C7 0, #2D3663 100%)",
   boxShadow: `rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset`,
   transition: `box-shadow .15s,transform .15s`,
   willChange: "box-shadow,transform",

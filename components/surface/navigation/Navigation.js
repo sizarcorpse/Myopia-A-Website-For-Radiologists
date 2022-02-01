@@ -28,6 +28,7 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
   "& .websiteLogo": {
     a: {
       textDecoration: "none",
+      fontSize: "14px !important",
     },
   },
 }));
@@ -36,11 +37,12 @@ const ElevationScroll = (props) => {
   const { children, trigger } = props;
 
   return cloneElement(children, {
-    elevation: trigger ? 1 : 0,
     sx: {
-      background: trigger ? "#EDF1F6" : "none",
+      backdropFilter: trigger ? "blur(5px)" : "none",
+      background: trigger ? "rgba(255, 255, 255, 0.72)" : "none",
       top: trigger ? "0%" : 50,
       transition: "top 250ms ease-in-out, background 250ms ease-in-out",
+      boxShadow: trigger ? "rgb(231 235 240) 0px -1px 1px inset" : "none",
       willChange: "top , background",
       "& .navigationItems p": {
         color: trigger ? "#2D3663" : "#EDF1F6",
@@ -65,14 +67,14 @@ const Navigation = (props) => {
   const [platform, setPlatform] = useState(false);
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
 
-  // useEffect(() => {
-  //   Cookies.set("platform", platform);
-  //   if (platform === false) {
-  //     router.push("/");
-  //   } else if (platform === true) {
-  //     router.push("/practitioner");
-  //   }
-  // }, [platform]);
+  useEffect(() => {
+    Cookies.set("platform", platform);
+    if (platform === false) {
+      router.push("/");
+    } else if (platform === true) {
+      router.push("/practitioner");
+    }
+  }, [platform]);
 
   const handleSwitchChange = (event) => {
     if (platform === false) {
@@ -104,6 +106,10 @@ const Navigation = (props) => {
                     <Typography
                       variant="h3"
                       color={trigger ? "primary.dark" : "primary.light"}
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "28px !important",
+                      }}
                     >
                       MYOPIA
                     </Typography>
