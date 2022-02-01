@@ -11,3 +11,4 @@ export { default as MPDoctor } from "./MPDoctor";
 export { default as MPAddress } from "./MPAddress";
 export { default as MPAddressItem } from "./MPAddressItem";
 export { default as MPAccordion } from "./MPAccordion";
+export { default as MPTabs } from "./MPTabs";

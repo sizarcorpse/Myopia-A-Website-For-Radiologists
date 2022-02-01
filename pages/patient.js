@@ -1,28 +1,28 @@
 import Head from "next/head";
 import { Grid, Container } from "@mui/material";
-import { ContactHero, ContactForm } from "components/section/contact/";
-import { mockContact } from "mocks/";
+import { PatientHero, PatientInformation } from "components/section/patient/";
+import { mockPatient } from "mocks/";
 
-const Contact = (props) => {
-  const { hero, contact } = mockContact;
+const Patient = (props) => {
+  const { hero, information } = mockPatient;
 
   return (
     <Grid component="main">
       <Head>
-        <title>Myopia 👩‍⚕️ : Contact</title>
+        <title>Myopia 👩‍⚕️ : Patient</title>
         <meta name="description" content="A website for radiologists" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Grid item xs={12}>
-        <ContactHero data={hero} />
+        <PatientHero data={hero} />
       </Grid>
       <Grid item xs={12}>
         <Container>
-          <ContactForm data={contact} />
+          <PatientInformation data={information} />
         </Container>
       </Grid>
     </Grid>
   );
 };
 
-export default Contact;
+export default Patient;

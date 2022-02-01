@@ -67,14 +67,14 @@ const Navigation = (props) => {
   const [platform, setPlatform] = useState(false);
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
 
-  useEffect(() => {
-    Cookies.set("platform", platform);
-    if (platform === false) {
-      router.push("/");
-    } else if (platform === true) {
-      router.push("/practitioner");
-    }
-  }, [platform]);
+  // useEffect(() => {
+  //   Cookies.set("platform", platform);
+  //   if (platform === false) {
+  //     router.push("/");
+  //   } else if (platform === true) {
+  //     router.push("/practitioner");
+  //   }
+  // }, [platform]);
 
   const handleSwitchChange = (event) => {
     if (platform === false) {
