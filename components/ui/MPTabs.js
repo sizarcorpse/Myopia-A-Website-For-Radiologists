@@ -18,11 +18,15 @@ const MPTabsStyled = styled(Box)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     flexWrap: "wrap",
-    justifyContent: "center",
-    alignItems: "center",
     gap: theme.spacing(1),
+
+    "& .MuiTabs-flexContainer": {
+      alignItems: "center",
+      justifyContent: "center",
+    },
   },
 
+  width: "100%",
   maxWidth: 900,
   margin: "0 auto",
   "& > .tabs": {
@@ -63,6 +67,7 @@ const MPTabsStyled = styled(Box)(({ theme }) => ({
 
     "&  .content": {
       padding: theme.spacing(2, 0, 2, 4),
+
       [theme.breakpoints.down("sm")]: {
         textAlign: "center",
       },

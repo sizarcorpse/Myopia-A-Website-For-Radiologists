@@ -23,14 +23,8 @@ const mockPatient = {
     ],
   },
   information: {
-    photo: {
-      desktop:
-        "https://images.prismic.io/myopia/98cba092-c24f-433d-9aa3-eeac72061ce1_locallyownedimage.png",
-      mobile: "",
-      alt: "we are locally owned and operated",
-    },
-    title: "locally owned and operated.",
-    subtitle: "we are",
+    title: "Patients Information",
+    subtitle: "RECEIVE",
     descriptions: [
       {
         order: 1,
