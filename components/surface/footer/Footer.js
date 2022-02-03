@@ -1,5 +1,5 @@
-import {} from "react";
 import Link from "next/link";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import {
   Box,
@@ -9,14 +9,13 @@ import {
   Grid,
   Stack,
   Divider,
-  useMediaQuery,
-  useTheme,
 } from "@mui/material";
 import { MPAddressItem, MPSocial } from "components/ui";
 import { mockFooter } from "mocks/";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailIcon from "@mui/icons-material/Mail";
+
 const FooterStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -26,19 +25,45 @@ const FooterStyled = styled(Box)(({ theme }) => ({
 
 const ListItemsStyed = styled(Stack)(({ theme }) => ({
   "& a": {
+    position: "relative",
     textDecoration: "none",
     maxWidth: "max-content",
+    margin: "0 0 0 0",
+    "& p": {
+      transition: "all 250ms ease 0ms",
+    },
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      right: 0,
+      width: 10,
+      height: "100%",
+      background: `url('/assets/root/anchorArrowLight.svg')`,
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      opacity: 0,
+      transform: "translateX(0%)",
+      transition: "all 250ms ease 0ms",
+    },
+    "&:hover": {
+      "& p": {
+        color: theme.palette.primary.main,
+      },
+      "&::after": {
+        opacity: 1,
+        transform: "translateX(15px)",
+      },
+    },
   },
 }));
 
-const ListItems = ({ items, dir, spacing, wrap }) => {
+const ListItems = ({ items, direction, spacing, wrap }) => {
   return (
     <ListItemsStyed
-      spacing={1}
-      direction={dir ? dir : "column"}
-      spacing={spacing ? spacing : 1}
-      sx={{ flexWrap: wrap ? "wrap" : "nowrap" }}
-      justifyContent="center"
+      direction={direction}
+      sx={{ flexWrap: wrap ? "wrap" : "nowrap", gap: spacing ? spacing : 0 }}
     >
       {items.map((item, index) => (
         <Link href={item.url.path} key={index}>
@@ -93,135 +118,164 @@ const Footer = (props) => {
     rights,
   } = mockFooter;
   const [one, two] = locations;
-  const matchesSM = useMediaQuery(useTheme().breakpoints.down("sm"));
-  const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
-  const matchesLG = useMediaQuery(`(max-width: 980px)`);
-
   return (
     <FooterStyled>
       <Container>
-        <Grid container spacing={4}>
-          <Grid item xxs={12} xs={12} sm={12} md={4}>
-            <Link href="/">
-              <a>
-                <Typography
-                  variant="h3"
-                  color="primary.light"
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "28px !important",
-                    mb: 4,
-                  }}
-                >
-                  MYOPIA
-                </Typography>
-              </a>
-            </Link>
-            <Typography
-              variant="body2"
-              color="primary.light"
-              sx={{ maxWidth: "41ch" }}
-            >
-              {about.description}
-            </Typography>
-          </Grid>
-          <Grid item xxs={12} xs={6} sm={6} md={2.5}>
-            <Typography
-              variant="caption"
-              component="p"
-              color="primary.light"
-              sx={{ mb: 4 }}
-            >
-              {patient.title}
-            </Typography>
-            <ListItems items={patient.links} />
-            <Typography
-              variant="caption"
-              component="p"
-              color="primary.light"
-              sx={{ mb: 4, mt: 4 }}
-            >
-              {patient.book.title}
-            </Typography>
-            <ListItems items={patient.book.links} />
-          </Grid>
-          <Grid item xxs={12} xs={6} sm={6} md={2.5}>
-            <Typography
-              variant="caption"
-              component="p"
-              color="primary.light"
-              sx={{ mb: 4 }}
-            >
-              {practitioner.title}
-            </Typography>
-            <ListItems items={practitioner.links} />
-            <Typography
-              variant="caption"
-              component="p"
-              color="primary.light"
-              sx={{ mb: 4, mt: 4 }}
-            >
-              {practitioner.start.title}
-            </Typography>
-            <ListItems items={practitioner.start.links} />
-          </Grid>
+        <Grid container width={{ sm: 650, md: "auto" }} m={{ sm: "auto" }}>
           <Grid
             item
             xxs={12}
             xs={12}
             sm={12}
-            md={3}
-            sx={{
-              display: matchesMD && "flex",
-              flexDirection: matchesSM && "column",
-              gap: matchesSM && 4,
+            md={4}
+            pr={{
+              xxs: 0,
+              md: 2,
             }}
+            mb={{ xxs: 4 }}
           >
-            <Box sx={{ flexBasis: `calc(50%)` }}>
-              <Typography
-                variant="caption"
-                component="p"
-                color="primary.light"
-                sx={{ mb: 4 }}
-              >
-                Contact Us
-              </Typography>
-              <Addresses item={one.information} />
-            </Box>
+            <Link href="/">
+              <a>
+                <Image
+                  src="/assets/root/websiteLogo.svg"
+                  alt="myopia"
+                  width={160}
+                  height={60}
+                  priority={true}
+                  quality={100}
+                />
+              </a>
+            </Link>
+            <Typography
+              variant="body2"
+              color="primary.light"
+              sx={{ maxWidth: "50ch" }}
+            >
+              {about.description}
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xxs={6}
+            xs={6}
+            sm={6}
+            md={2.5}
+            pr={{
+              xxs: 0,
+              md: 2,
+            }}
+            mb={{ xxs: 4 }}
+          >
+            <Typography
+              variant="caption"
+              component="p"
+              color="primary.light"
+              mb={4}
+            >
+              {patient.title}
+            </Typography>
+            <ListItems
+              items={patient.links}
+              direction="column"
+              wrap={true}
+              spacing={1}
+            />
+            <Typography
+              variant="caption"
+              component="p"
+              color="primary.light"
+              mt={4}
+              sx={{ "& a": { textDecoration: "none", color: "primary.light" } }}
+            >
+              <Link href={patient.book.url.path}>{patient.book.title}</Link>
+            </Typography>
+          </Grid>
+          <Grid
+            item
+            xxs={6}
+            xs={6}
+            sm={6}
+            md={2.5}
+            pr={{
+              xxs: 0,
+              md: 2,
+            }}
+            mb={{ xxs: 4 }}
+          >
+            <Typography
+              variant="caption"
+              component="p"
+              color="primary.light"
+              mb={4}
+            >
+              {practitioner.title}
+            </Typography>
+            <ListItems
+              items={practitioner.links}
+              direction="column"
+              wrap={true}
+              spacing={1}
+            />
+          </Grid>
+          <Grid item xxs={12} xs={12} sm={12} md={3} mb={{ xxs: 4 }}>
             <Box
-              sx={{
-                flexBasis: matchesMD && `calc(50%)`,
-                pl: matchesSM ? "0px" : matchesMD ? "16px" : "0px",
+              display="flex"
+              justifyContent="space-between"
+              gap={4}
+              flexDirection={{
+                xxs: "column",
+                sm: "row",
+                md: "column",
+                lg: "column",
               }}
             >
-              <Typography
-                variant="caption"
-                component="p"
-                color="primary.light"
-                sx={{ mb: 4, mt: matchesMD ? 0 : 4 }}
-              >
-                Social
-              </Typography>
-              <MPSocial />
+              <Box flexBasis="50%">
+                <Typography
+                  variant="caption"
+                  component="p"
+                  color="primary.light"
+                  mb={4}
+                >
+                  Contact Us
+                </Typography>
+                <Addresses item={one.information} />
+              </Box>
+              <Box flexBasis="50%">
+                <Typography
+                  variant="caption"
+                  component="p"
+                  color="primary.light"
+                  mb={4}
+                >
+                  Social
+                </Typography>
+                <MPSocial />
+              </Box>
             </Box>
           </Grid>
           <Grid item xxs={12} xs={12} sm={12} md={12}>
             <Divider />
             <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: matchesLG && "center",
-                gap: matchesLG && 2,
-                mt: 4,
-                flexDirection: matchesLG && "column",
-              }}
+              display="flex"
+              flexDirection={{ xxs: "column", md: "row" }}
+              justifyContent={{ xxs: "center", md: "space-between" }}
+              mt={4}
             >
-              <Typography variant="body2" component="p" color="primary.light">
+              <Typography
+                variant="body2"
+                component="p"
+                color="primary.light"
+                mb={{ xxs: 2 }}
+              >
                 💀{new Date().getFullYear() + `  `}
                 {rights.title}
               </Typography>
-              <ListItems items={rights.links} dir="row" spacing={3} wrap />
+              <ListItems
+                items={rights.links}
+                direction="row"
+                spacing={2}
+                wrap={true}
+              />
             </Box>
           </Grid>
         </Grid>

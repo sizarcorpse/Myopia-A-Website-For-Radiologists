@@ -60,18 +60,12 @@ const mockFooter = {
       },
     ],
     book: {
-      title: "Book Now !",
-      links: [
-        {
-          order: 0,
-          title: "Book an Appointment",
-          slug: "book-an-appointment",
-          url: {
-            root: "",
-            path: "/contact",
-          },
-        },
-      ],
+      title: "Book an Appointment!",
+      slug: "book-an-appointment",
+      url: {
+        root: "",
+        path: "/contact",
+      },
     },
   },
   practitioner: {
