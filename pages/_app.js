@@ -6,7 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
 import Cookies from "js-cookie";
-import { Navigation } from "components/surface";
+import { Navigation, Footer } from "components/surface";
 
 const clientSideEmotionCache = createEmotionCache();
 export default function App(props) {
@@ -26,6 +26,7 @@ export default function App(props) {
         >
           <Navigation>
             <Component {...pageProps} />
+            <Footer />
           </Navigation>
         </SWRConfig>
       </ThemeConfig>
