@@ -21,6 +21,17 @@ const FooterStyled = styled(Box)(({ theme }) => ({
   flexDirection: "column",
   gap: theme.spacing(2),
   backgroundColor: "rgba(45, 54, 99,1)",
+
+  "& .footerGrid": {
+    [theme.breakpoints.up("md")]: {
+      width: "auto",
+      maxWidth: "100%",
+    },
+    [theme.breakpoints.down("md")]: {
+      width: "100%",
+      maxWidth: "700px",
+    },
+  },
 }));
 
 const ListItemsStyed = styled(Stack)(({ theme }) => ({
@@ -121,7 +132,7 @@ const Footer = (props) => {
   return (
     <FooterStyled>
       <Container>
-        <Grid container width={{ sm: 650, md: "auto" }} m={{ sm: "auto" }}>
+        <Grid container m={{ sm: "auto" }} className="footerGrid">
           <Grid
             item
             xxs={12}

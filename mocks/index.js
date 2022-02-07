@@ -9,3 +9,4 @@ export { default as mockOnlineImage } from "./mockOnlineImage";
 export { default as mockReferral } from "./mockReferral";
 export { default as mockPatient } from "./mockPatient";
 export { default as mockFooter } from "./mockFooter";
+export { default as mockService } from "./mockService";

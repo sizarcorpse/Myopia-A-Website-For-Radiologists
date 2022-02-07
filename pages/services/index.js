@@ -4,7 +4,7 @@ import {
   ServicesHero,
   ServicesAllService,
   ServicesWhyUs,
-} from "components/section/service/";
+} from "components/section/services";
 import { mockServices } from "mocks/";
 const services = () => {
   const { hero, services, why } = mockServices;

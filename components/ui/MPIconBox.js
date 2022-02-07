@@ -13,8 +13,10 @@ const MpIconBoxStyled = styled(Box)(({ theme, mode }) => ({
   flexFlow: 1,
   gap: theme.spacing(2.5),
   padding: theme.spacing(4, 4),
-  width: mode === "playOnSlider" ? "100%" : "214px",
-  height: mode === "playOnSlider" ? "220px" : "196px",
+  width:
+    mode === "playOnSlider" ? "100%" : mode === "single" ? "160px" : "214px",
+  height:
+    mode === "playOnSlider" ? "220px" : mode === "single" ? "162px" : "196px",
   cursor: "pointer",
   border: 0,
   borderRadius: 6,
@@ -52,8 +54,17 @@ const MPIconBox = (props) => {
     <MpIconBoxStyled mode={mode ? mode : undefined}>
       <Link href={linkTo}>
         <a>
-          <Image src={icon} alt={title} width={69} height={69} />
-          <Typography variant="body1" color="primary.dark" className="title">
+          <Image
+            src={icon}
+            alt={title}
+            width={mode === "single" ? 45 : 69}
+            height={mode === "single" ? 45 : 69}
+          />
+          <Typography
+            variant={mode === "single" ? "body2" : "body1"}
+            color="primary.dark"
+            className="title"
+          >
             {title}
           </Typography>
         </a>

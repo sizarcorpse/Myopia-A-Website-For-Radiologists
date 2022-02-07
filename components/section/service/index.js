@@ -1,3 +1,2 @@
-export { default as ServicesHero } from "./ServicesHero";
-export { default as ServicesAllService } from "./ServicesAllService";
-export { default as ServicesWhyUs } from "./ServicesWhyUs";
+export { default as ServiceHero } from "./ServiceHero";
+export { default as ServiceContent } from "./ServiceContent";

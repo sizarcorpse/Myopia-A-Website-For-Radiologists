@@ -34,7 +34,7 @@ const MpTitleStyled = styled(Box)(({ theme, alignment, isSubtitle }) => ({
 }));
 
 const MPTitle = (props) => {
-  const { subtitle, title, alignment } = props;
+  const { subtitle, title, alignment, subtitleColor } = props;
 
   return (
     <MpTitleStyled alignment={alignment} isSubtitle={subtitle}>
@@ -42,7 +42,7 @@ const MPTitle = (props) => {
         variant="h1"
         component="p"
         className="subtitle"
-        color="primary.light"
+        color={subtitleColor}
       >
         {subtitle}
       </Typography>
@@ -60,12 +60,14 @@ const MPTitle = (props) => {
 
 MPTitle.defaultProps = {
   alignment: "left",
+  subtitleColor: "primary.light",
 };
 
 MPTitle.propTypes = {
   subtitle: PropTypes.string,
   title: PropTypes.string.isRequired,
   alignment: PropTypes.oneOf(["left", "center"]),
+  subtitleColor: PropTypes.oneOf(["primary.light", "primary.lightish"]),
 };
 
 export default MPTitle;
