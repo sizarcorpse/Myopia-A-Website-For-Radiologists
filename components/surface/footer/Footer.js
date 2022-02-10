@@ -74,7 +74,10 @@ const ListItems = ({ items, direction, spacing, wrap }) => {
   return (
     <ListItemsStyed
       direction={direction}
-      sx={{ flexWrap: wrap ? "wrap" : "nowrap", gap: spacing ? spacing : 0 }}
+      sx={{
+        flexWrap: wrap ? "wrap" : "nowrap",
+        gap: spacing ? spacing : 0,
+      }}
     >
       {items.map((item, index) => (
         <Link href={item.url.path} key={index}>
@@ -151,7 +154,7 @@ const Footer = (props) => {
                   src="/assets/root/websiteLogo.svg"
                   alt="myopia"
                   width={160}
-                  height={60}
+                  height={90}
                   priority={true}
                   quality={100}
                 />
@@ -270,13 +273,14 @@ const Footer = (props) => {
               display="flex"
               flexDirection={{ xxs: "column", md: "row" }}
               justifyContent={{ xxs: "center", md: "space-between" }}
+              alignItems={{ xxs: "flex-start", md: "center" }}
               mt={4}
             >
               <Typography
                 variant="body2"
                 component="p"
                 color="primary.light"
-                mb={{ xxs: 2 }}
+                mb={{ xxs: 2, md: 0 }}
               >
                 💀{new Date().getFullYear() + `  `}
                 {rights.title}
