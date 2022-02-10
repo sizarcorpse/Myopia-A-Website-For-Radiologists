@@ -24,7 +24,7 @@ const NavigationHeader = (props) => {
           justifyContent: "flex-end",
           width: "100%",
           height: "100%",
-          minHeight: "50px",
+          minHeight: "56px",
         }}
       >
         <Typography variant="body2" color="primary.light">

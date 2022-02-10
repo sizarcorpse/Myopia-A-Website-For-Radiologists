@@ -7,6 +7,7 @@ import PatientNavigation from "./PatientNavigation";
 import PractitionerNavigation from "./PractitionerNavigation";
 import { useRouter } from "next/router";
 import { navigation } from "mocks";
+import { MPDrawer } from "components/ui";
 
 import {
   Box,
@@ -41,7 +42,7 @@ const ElevationScroll = (props) => {
       backdropFilter: trigger ? "blur(5px)" : "none",
       background: trigger ? "rgba(255, 255, 255, 0.72)" : "none",
       top: trigger ? "0%" : 50,
-      transition: "top 250ms ease-in-out, background 250ms ease-in-out",
+      transition: "top 250ms ease, background 250ms ease",
       boxShadow: trigger ? "rgb(231 235 240) 0px -1px 1px inset" : "none",
       willChange: "top , background",
       "& .navigationItems p": {
@@ -66,7 +67,9 @@ const Navigation = (props) => {
   const router = useRouter();
   const [platform, setPlatform] = useState(false);
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
-
+  const [state, setState] = useState({
+    right: false,
+  });
   // useEffect(() => {
   //   Cookies.set("platform", platform);
   //   if (platform === false) {
@@ -75,6 +78,18 @@ const Navigation = (props) => {
   //     router.push("/practitioner");
   //   }
   // }, [platform]);
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event &&
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
 
   const handleSwitchChange = (event) => {
     if (platform === false) {
@@ -120,7 +135,21 @@ const Navigation = (props) => {
               {matchesMD ? (
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <MenuIcon
-                    sx={{ color: trigger ? "primary.dark" : "primary.light" }}
+                    disablefocusripple="true"
+                    disableripple="true"
+                    onClick={toggleDrawer("right", true)}
+                    sx={{
+                      color: trigger ? "primary.dark" : "primary.light",
+                      cursor: "pointer",
+                    }}
+                  />
+                  <MPDrawer
+                    state={state}
+                    toggleDrawer={toggleDrawer}
+                    navigationItems={{
+                      forPatient: navigation.patient,
+                      forPractitioner: navigation.practitioner,
+                    }}
                   />
                 </Box>
               ) : (

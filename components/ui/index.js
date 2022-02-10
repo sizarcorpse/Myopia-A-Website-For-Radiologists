@@ -13,3 +13,4 @@ export { default as MPAddressItem } from "./MPAddressItem";
 export { default as MPAccordion } from "./MPAccordion";
 export { default as MPTabs } from "./MPTabs";
 export { default as MPSocial } from "./MPSocial";
+export { default as MPDrawer } from "./MPDrawer";
