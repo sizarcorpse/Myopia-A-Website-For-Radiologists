@@ -76,6 +76,20 @@ const typography = {
     fontSize: pxToRem(22),
     ...responsiveFontSizes({ xs: 18, sm: 18, md: 20, lg: 22, xl: 22 }),
   },
+  h7: {
+    fontFamily: FONT_PRIMARY,
+    fontWeight: 600,
+    lineHeight: 1.3,
+    fontSize: pxToRem(21),
+    ...responsiveFontSizes({ xs: 18, sm: 18, md: 20, lg: 21, xl: 21 }),
+  },
+  h8: {
+    fontFamily: FONT_PRIMARY,
+    fontWeight: 600,
+    lineHeight: 1.3,
+    fontSize: pxToRem(16),
+    ...responsiveFontSizes({ xs: 14, sm: 14, md: 16, lg: 16, xl: 16 }),
+  },
   subtitle1: {
     fontWeight: 600,
     lineHeight: 1.5,
@@ -112,8 +126,8 @@ const typography = {
   button: {
     fontWeight: 600,
     lineHeight: 1.5,
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 19, md: 20, lg: 20 }),
+    fontSize: pxToRem(16),
+    ...responsiveFontSizes({ xs: 14, sm: 14, md: 16, lg: 16, xl: 16 }),
   },
 };
 

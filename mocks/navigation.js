@@ -38,6 +38,15 @@ const navigation = {
     },
     {
       order: 4,
+      title: "Blog",
+      slug: "blog",
+      url: {
+        root: "",
+        path: "/blog",
+      },
+    },
+    {
+      order: 5,
       title: "Contact",
       slug: "contact",
       url: {
@@ -81,6 +90,24 @@ const navigation = {
       url: {
         root: "",
         path: "/online-access",
+      },
+    },
+    {
+      order: 4,
+      title: "Blog",
+      slug: "blog",
+      url: {
+        root: "",
+        path: "/blog",
+      },
+    },
+    {
+      order: 5,
+      title: "Contact",
+      slug: "contact",
+      url: {
+        root: "",
+        path: "/contact",
       },
     },
   ],

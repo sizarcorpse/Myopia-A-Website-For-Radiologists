@@ -14,3 +14,4 @@ export { default as MPAccordion } from "./MPAccordion";
 export { default as MPTabs } from "./MPTabs";
 export { default as MPSocial } from "./MPSocial";
 export { default as MPDrawer } from "./MPDrawer";
+export { default as MPBlogCard } from "./MPBlogCard";
