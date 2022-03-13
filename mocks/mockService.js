@@ -268,9 +268,9 @@ const mockService = {
     {
       serviceId: 6,
       title: "Women's Imaging",
-      slug: "",
+      slug: "womans-imaging",
       hero: {
-        title: "womans-imaging",
+        title: "Women's Imaging",
         subTitle: "Service",
       },
       content: [
