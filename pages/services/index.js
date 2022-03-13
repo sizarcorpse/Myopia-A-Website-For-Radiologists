@@ -12,7 +12,7 @@ const services = () => {
   return (
     <Grid component="main">
       <Head>
-        <title>Myopia 👩‍⚕️ : About</title>
+        <title>Myopia 👩‍⚕️ : Services</title>
         <meta name="description" content="A website for radiologists" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -74,7 +74,7 @@ const MPBlogCard = (props) => {
   return (
     <MPBlogCardStyled layout={layout}>
       <Box className="image">
-        <Link href="/blog/[slug]" as={`/blog/${slug}`}>
+        <Link href="/blog/[id]" as={`/blog/${id}`}>
           <a className="noStyle">
             {" "}
             <Image
@@ -83,6 +83,7 @@ const MPBlogCard = (props) => {
               height={319}
               priority={true}
               objectFit="cover"
+              alt={title}
             />
           </a>
         </Link>

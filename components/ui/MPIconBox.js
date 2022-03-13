@@ -1,11 +1,10 @@
-import {} from "react";
 import Image from "next/image";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import { Box, styled, Typography } from "@mui/material";
 
-const MpIconBoxStyled = styled(Box)(({ theme, mode }) => ({
+const MpIconBoxStyled = styled(Box)(({ theme, mode, isActive }) => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

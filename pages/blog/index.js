@@ -4,7 +4,8 @@ import { BlogHero, BlogPosts } from "components/blog/posts/";
 import { mockBlog } from "mocks/";
 
 const Blog = (props) => {
-  const { hero, posts } = mockBlog;
+  const { hero, posts } = props;
+  // const { hero, posts } = mockBlog;
   return (
     <Grid component="main">
       <Head>
@@ -24,5 +25,18 @@ const Blog = (props) => {
     </Grid>
   );
 };
+
+export async function getStaticProps() {
+  // const res = await fetch('https://.../posts')
+  const { hero, posts } = await mockBlog;
+
+  return {
+    props: {
+      hero,
+      posts,
+    },
+    revalidate: 10,
+  };
+}
 
 export default Blog;

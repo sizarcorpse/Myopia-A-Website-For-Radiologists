@@ -1,5 +1,5 @@
-import {} from "react";
 import PropTypes from "prop-types";
+
 import {
   Box,
   styled,
@@ -59,6 +59,7 @@ const ServiceContent = (props) => {
   const {
     data: { content, services },
   } = props;
+
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
   const matchesSM = useMediaQuery(useTheme().breakpoints.down("sm"));
 
