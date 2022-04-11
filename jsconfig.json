@@ -8,7 +8,9 @@
       "styles/*": ["styles/*"],
       "pages/*": ["pages/*"],
       "mocks/*": ["mocks/*"],
-      "themes/*": ["themes/*"]
+      "themes/*": ["themes/*"],
+      "models/*": ["models/*"],
+      "libs/*": ["libs/*"]
     }
   }
 }
