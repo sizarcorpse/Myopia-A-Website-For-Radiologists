@@ -8,7 +8,7 @@ import PractitionerNavigation from "./PractitionerNavigation";
 import { useRouter } from "next/router";
 import { navigation } from "mocks";
 import { MPDrawer } from "components/ui";
-
+import { useSession } from "next-auth/react";
 import {
   Box,
   styled,
@@ -19,6 +19,7 @@ import {
   Container,
   useTheme,
   useMediaQuery,
+  Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 const NavigationStyled = styled(Box)(({ theme }) => ({}));
@@ -31,6 +32,23 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
       textDecoration: "none",
       fontSize: "14px !important",
     },
+  },
+}));
+
+const LoginButtonStyled = styled(Button)(({ theme }) => ({
+  ...theme.typography.caption,
+  color: theme.palette.primary.dark,
+  textTransform: "none",
+  borderRadius: 8,
+  padding: theme.spacing(1, 3),
+  backgroundImage:
+    "radial-gradient(100% 100% at 100% 0, #FCFCFD 0, #EDF1F6 100%)",
+  boxShadow: `rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -10px,rgba(58, 65, 111, .5) 0 -1px 0 inset`,
+  transition: `box-shadow .15s,transform .15s`,
+  willChange: "box-shadow,transform",
+  "&:hover": {
+    backgroundColor: theme.palette.primary.light,
+    transform: "translateY(2px)",
   },
 }));
 
@@ -65,6 +83,7 @@ const ElevationScroll = (props) => {
 const Navigation = (props) => {
   const { children } = props;
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [platform, setPlatform] = useState(false);
   const matchesMD = useMediaQuery(useTheme().breakpoints.down("md"));
   const [state, setState] = useState({
@@ -153,12 +172,30 @@ const Navigation = (props) => {
                   />
                 </Box>
               ) : (
-                <Box className="navigationItems">
-                  {platform === false ? (
-                    <PatientNavigation items={navigation.patient} />
-                  ) : (
-                    <PractitionerNavigation items={navigation.practitioner} />
-                  )}
+                <Box
+                  sx={{ display: "flex", alignItems: "center", gap: "24px" }}
+                >
+                  <Box className="navigationItems">
+                    {platform === false ? (
+                      <PatientNavigation items={navigation.patient} />
+                    ) : (
+                      <PractitionerNavigation items={navigation.practitioner} />
+                    )}
+                  </Box>
+                  <Box className="userNav">
+                    {session ? (
+                      <LoginButtonStyled className="loginButton">
+                        Profile
+                      </LoginButtonStyled>
+                    ) : (
+                      <LoginButtonStyled
+                        className="loginButton"
+                        onClick={() => router.push("/login")}
+                      >
+                        Login
+                      </LoginButtonStyled>
+                    )}
+                  </Box>
                 </Box>
               )}
             </Container>

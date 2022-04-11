@@ -11,3 +11,4 @@ export { default as mockPatient } from "./mockPatient";
 export { default as mockFooter } from "./mockFooter";
 export { default as mockService } from "./mockService";
 export { default as mockBlog } from "./mockBlog";
+export { default as mockLogin } from "./mockLogin";

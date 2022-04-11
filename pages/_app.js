@@ -7,7 +7,7 @@ import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
 import Cookies from "js-cookie";
 import { Navigation, Footer } from "components/surface";
-
+import { SessionProvider } from "next-auth/react";
 const clientSideEmotionCache = createEmotionCache();
 export default function App(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
@@ -18,16 +18,17 @@ export default function App(props) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeConfig>
-        {/* <CssBaseline /> */}
         <SWRConfig
           value={{
             fetcher: (url) => fetch(url).then((r) => r.json()),
           }}
         >
-          <Navigation>
-            <Component {...pageProps} />
-            <Footer />
-          </Navigation>
+          <SessionProvider session={pageProps.session}>
+            <Navigation>
+              <Component {...pageProps} />
+              <Footer />
+            </Navigation>
+          </SessionProvider>
         </SWRConfig>
       </ThemeConfig>
     </CacheProvider>

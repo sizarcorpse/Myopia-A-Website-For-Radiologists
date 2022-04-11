@@ -54,15 +54,6 @@ const navigation = {
         path: "/contact",
       },
     },
-    {
-      order: 6,
-      title: "Dashboard",
-      slug: "dashboard",
-      url: {
-        root: "",
-        path: "/dashboard",
-      },
-    },
   ],
   practitioner: [
     {
@@ -117,15 +108,6 @@ const navigation = {
       url: {
         root: "",
         path: "/contact",
-      },
-    },
-    {
-      order: 6,
-      title: "Dashboard",
-      slug: "dashboard",
-      url: {
-        root: "",
-        path: "/dashboard",
       },
     },
   ],
