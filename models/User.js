@@ -27,7 +27,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ["admin", "author", "stuff", "user"],
     default: "user",
-    immutable: true,
   },
 
   //   User Assets
@@ -39,3 +38,5 @@ const UserSchema = new mongoose.Schema({
     },
   ],
 });
+
+export default mongoose.models.User || mongoose.model("User", UserSchema);
