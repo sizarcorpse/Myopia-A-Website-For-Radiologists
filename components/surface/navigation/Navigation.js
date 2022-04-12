@@ -184,7 +184,12 @@ const Navigation = (props) => {
                   </Box>
                   <Box className="userNav">
                     {session ? (
-                      <LoginButtonStyled className="loginButton">
+                      <LoginButtonStyled
+                        className="loginButton"
+                        onClick={() =>
+                          router.push(`/u/${session.user.username}`)
+                        }
+                      >
                         Profile
                       </LoginButtonStyled>
                     ) : (

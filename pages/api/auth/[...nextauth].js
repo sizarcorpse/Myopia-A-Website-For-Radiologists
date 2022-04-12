@@ -31,7 +31,7 @@ export default NextAuth({
     // signOut: "/login", // Displays form with sign out button
     // error: '/auth/error', // Error code passed in query string as ?error=
     // verifyRequest: '/auth/verify-request', // Used for check email page
-    // newUser: "/page-name", // If set, new users will be directed here on first sign in
+    // newUser: `/u/[user]/update`, // If set, new users will be directed here on first sign in
   },
 
   callbacks: {
@@ -42,14 +42,18 @@ export default NextAuth({
     async session({ session, token, user }) {
       if (token) {
         session.user.id = token.id;
-        session.user.role = await getUserRoles(token.id);
+        const { role, username } = await getUserInitials(token.id);
+        session.user.role = role;
+        session.user.username = username;
       }
       return session;
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       if (user) {
         token.id = user.id;
-        token.role = await getUserRoles(user.id);
+        const { role, username } = await getUserInitials(user.id);
+        token.role = role;
+        token.username = username;
       }
       return token;
     },
@@ -58,7 +62,7 @@ export default NextAuth({
   events: {
     signIn: async ({ user, account, profile, isNewUser }) => {
       if (isNewUser) {
-        await setUserRoles(user.id);
+        await setUserInitials(user);
       }
     },
   },
@@ -66,30 +70,32 @@ export default NextAuth({
   debug: false,
 });
 
-const getUserRoles = async (userId) => {
+const getUserInitials = async (userId) => {
   if (!userId) {
     return "guest";
   }
 
-  const { role } = await User.findById({ _id: userId }).select({
+  const { role, username } = await User.findById({ _id: userId }).select({
     role: 1,
+    username: 1,
     _id: 0,
   });
 
-  return role;
+  return { role, username };
 };
 
-const setUserRoles = async (userId) => {
-  if (!userId) {
+const setUserInitials = async (newUser) => {
+  if (!newUser) {
     return;
   }
 
-  const user = await User.findById({ _id: userId });
+  const user = await User.findById({ _id: newUser.id });
 
   if (!user) {
     return;
   }
 
   user.role = "user";
+  user.username = user.email.split("@")[0];
   user.save();
 };

@@ -62,6 +62,7 @@ const typography = {
     fontSize: pxToRem(32),
     ...responsiveFontSizes({ xs: 20, sm: 20, md: 24, lg: 28, xl: 32 }),
   },
+
   h5: {
     fontFamily: FONT_TERTIARY,
     fontWeight: 500,
@@ -89,6 +90,13 @@ const typography = {
     lineHeight: 1.3,
     fontSize: pxToRem(16),
     ...responsiveFontSizes({ xs: 14, sm: 14, md: 16, lg: 16, xl: 16 }),
+  },
+  h9: {
+    fontFamily: FONT_PRIMARY,
+    fontWeight: 700,
+    lineHeight: 1.5,
+    fontSize: pxToRem(28),
+    ...responsiveFontSizes({ xs: 20, sm: 20, md: 24, lg: 28, xl: 28 }),
   },
   subtitle1: {
     fontWeight: 600,

@@ -37,6 +37,23 @@ const UserSchema = new mongoose.Schema({
     default: "user",
   },
 
+  bio: {
+    type: String,
+    trim: true,
+  },
+  location: {
+    type: String,
+    trim: true,
+  },
+  website: {
+    type: String,
+    trim: true,
+  },
+  occupation: {
+    type: String,
+    trim: true,
+  },
+
   //   User Assets
 
   articles: [
@@ -46,5 +63,10 @@ const UserSchema = new mongoose.Schema({
     },
   ],
 });
+
+UserSchema.statics.findByUsername = async function (username) {
+  const user = await this.findOne({ username: username }).exec();
+  return user;
+};
 
 export default mongoose.models.User || mongoose.model("User", UserSchema);
