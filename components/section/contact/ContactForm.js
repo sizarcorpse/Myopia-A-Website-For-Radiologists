@@ -67,7 +67,7 @@ const ContactForm = (props) => {
         >
           {header.description}
         </Typography>
-        <MPSlider mpComponent={<MPAddress />} items={locations} gutter="0" />
+        <MPSlider mpComponent={<MPAddress />} items={locations} gutter={0} />
       </Box>
 
       <FormBoxStyled>

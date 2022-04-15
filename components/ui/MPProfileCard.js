@@ -9,6 +9,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import Chip from "@mui/material/Chip";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import ArticleIcon from "@mui/icons-material/Article";
+import EmailIcon from "@mui/icons-material/Email";
 
 const iconRole = {
   admin: {
@@ -155,6 +156,8 @@ const MpProfileCard = (props) => {
 
           {item.location &&
             MuiTextIcon(<PlaceIcon color="primary.dark" />, item.location)}
+          {item.email &&
+            MuiTextIcon(<EmailIcon color="primary.dark" />, item.email)}
 
           {item.website && (
             <MuiTextIconStyled>

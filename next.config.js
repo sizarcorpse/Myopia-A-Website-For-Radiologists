@@ -6,6 +6,7 @@ module.exports = {
       "images.prismic.io",
       "myopia.cdn.prismic.io",
       "avatars.githubusercontent.com",
+      "res.cloudinary.com",
     ],
   },
 };

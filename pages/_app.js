@@ -8,7 +8,14 @@ import { SWRConfig } from "swr";
 import Cookies from "js-cookie";
 import { Navigation, Footer } from "components/surface";
 import { SessionProvider } from "next-auth/react";
+import { SnackbarProvider } from "notistack";
+import { Slide } from "@mui/material";
+
 const clientSideEmotionCache = createEmotionCache();
+
+import "filepond/dist/filepond.min.css";
+import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+
 export default function App(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
@@ -24,10 +31,20 @@ export default function App(props) {
           }}
         >
           <SessionProvider session={pageProps.session}>
-            <Navigation>
-              <Component {...pageProps} />
-              <Footer />
-            </Navigation>
+            <SnackbarProvider
+              dense
+              maxSnack={3}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+              TransitionComponent={Slide}
+            >
+              <Navigation>
+                <Component {...pageProps} />
+                <Footer />
+              </Navigation>
+            </SnackbarProvider>
           </SessionProvider>
         </SWRConfig>
       </ThemeConfig>

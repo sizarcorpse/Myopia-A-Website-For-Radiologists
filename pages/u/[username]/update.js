@@ -1,7 +1,29 @@
 import Head from "next/head";
-import { Grid, Container, Typography } from "@mui/material";
+import { Grid } from "@mui/material";
 import { getSession } from "next-auth/react";
+import { ProfileSurface } from "components/surface";
+import { UpdateUserForm } from "components/form";
+import useSWR from "swr";
 const UpdateProfile = (props) => {
+  const { isOwner, initialData } = props;
+
+  const { data, error, mutate } = useSWR(
+    `/api/user/${initialData.username}`,
+
+    { fallbackData: initialData }
+  );
+
+  const updateForm = {
+    name: data.name,
+    username: data.username,
+    email: data.email,
+    image: data.image,
+    bio: data.bio,
+    occupation: data.occupation,
+    location: data.location,
+    website: data.website,
+  };
+
   return (
     <Grid component="main">
       <Head>
@@ -11,35 +33,53 @@ const UpdateProfile = (props) => {
       </Head>
 
       <Grid item xs={12}>
-        <Container maxWidth="lg">
-          <Typography variant="h1" component="h1">
-            Update
-          </Typography>
-        </Container>
+        <ProfileSurface uInfo={data} isOwner={isOwner}>
+          <UpdateUserForm updateForm={updateForm} mutate={mutate} />
+        </ProfileSurface>
       </Grid>
     </Grid>
   );
 };
 
-// export async function getServerSideProps(ctx) {
-//   const { req, res } = ctx;
-//   const {
-//     query: { username },
-//   } = req;
-//   const session = await getSession({ req });
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: "/login",
-//       },
-//     };
-//   }
+export const getServerSideProps = async (ctx) => {
+  const { req, res } = ctx;
+  const {
+    query: { username },
+  } = ctx;
+  const session = await getSession({ req });
 
-//   return {
-//     props: {
-//       session: null,
-//       providers: providers,
-//     },
-//   };
-// }
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/login",
+      },
+    };
+  }
+
+  if (session && session.user.username !== username) {
+    return {
+      redirect: {
+        destination: `/u/${session.user.username}`,
+      },
+    };
+  }
+
+  if (session && session.user.username === username) {
+    const r = await fetch(`http://localhost:3000/api/user/${username}`, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        cookie: req.headers.cookie,
+      },
+    });
+    const initialData = await r.json();
+    return {
+      props: {
+        isOwner: true,
+        initialData,
+      },
+    };
+  }
+};
 export default UpdateProfile;

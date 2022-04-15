@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ProfileSurface } from "components/surface";
 import { Grid } from "@mui/material";
 import { getSession } from "next-auth/react";
+
 const UserProfile = (props) => {
   const { isOwner, userInformation } = props;
   return (
@@ -12,7 +13,9 @@ const UserProfile = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <ProfileSurface uInfo={userInformation}>User Tab</ProfileSurface>
+      <ProfileSurface uInfo={userInformation} isOwner={isOwner}>
+        User Tab
+      </ProfileSurface>
     </Grid>
   );
 };
@@ -31,24 +34,27 @@ export const getServerSideProps = async (ctx) => {
     };
   }
 
+  const r = await fetch(`http://localhost:3000/api/user/${username}`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      cookie: req.headers.cookie,
+    },
+  });
+
+  const userInformation = await r.json();
+
   if (session && session.user.username !== username) {
     return {
       props: {
         isOwner: false,
+        userInformation,
       },
     };
   }
 
   if (session && session.user.username === username) {
-    const r = await fetch(`http://localhost:3000/api/user/${username}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        cookie: req.headers.cookie,
-      },
-    });
-    const userInformation = await r.json();
     return {
       props: {
         isOwner: true,
