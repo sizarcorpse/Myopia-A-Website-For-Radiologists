@@ -1,13 +1,12 @@
 import { useState, useEffect, cloneElement } from "react";
 import Link from "next/link";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
 import NavigationHeader from "./NavigationHeader";
 import PatientNavigation from "./PatientNavigation";
 import PractitionerNavigation from "./PractitionerNavigation";
 import { useRouter } from "next/router";
 import { navigation } from "mocks";
-import { MPDrawer } from "components/ui";
+import { MPDrawer, MpDropdownMenu } from "components/ui";
 import { useSession } from "next-auth/react";
 import {
   Box,
@@ -22,6 +21,7 @@ import {
   Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+
 const NavigationStyled = styled(Box)(({ theme }) => ({}));
 
 const AppBarStyled = styled(AppBar)(({ theme }) => ({
@@ -184,14 +184,18 @@ const Navigation = (props) => {
                   </Box>
                   <Box className="userNav">
                     {session ? (
-                      <LoginButtonStyled
-                        className="loginButton"
-                        onClick={() =>
-                          router.push(`/u/${session.user.username}`)
-                        }
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "16px",
+                        }}
                       >
-                        Profile
-                      </LoginButtonStyled>
+                        <MpDropdownMenu
+                          user={session.user}
+                          variant="withButton"
+                        />
+                      </Box>
                     ) : (
                       <LoginButtonStyled
                         className="loginButton"

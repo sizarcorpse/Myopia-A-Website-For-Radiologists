@@ -32,7 +32,6 @@ const typography = {
   fontWeightMedium: 600,
   fontWeightBold: 700,
   h1: {
-    // ? "BIG SUBTITLES" : MPTitle
     fontFamily: FONT_PRIMARY,
     fontWeight: 700,
     lineHeight: 1.1,
@@ -40,7 +39,6 @@ const typography = {
     ...responsiveFontSizes({ xs: 64, sm: 72, md: 80, lg: 100, xl: 100 }),
   },
   h2: {
-    // ? "HERO TITLE" : MPHeroTitle
     fontFamily: FONT_SECONDARY,
     fontWeight: 600,
     lineHeight: 1.3,
@@ -48,7 +46,6 @@ const typography = {
     ...responsiveFontSizes({ xs: 36, sm: 40, md: 48, lg: 64, xl: 64 }),
   },
   h3: {
-    // ? "SECTION TITLE, heading" : MPTitle
     fontFamily: FONT_SECONDARY,
     fontWeight: 600,
     lineHeight: 1.1,

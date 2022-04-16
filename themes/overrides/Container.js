@@ -21,6 +21,24 @@ export default function Container(theme) {
               padding: theme.spacing(12, 4),
             },
           },
+          "&.MuiContainer-maxWidthMd": {
+            maxWidth: 1280,
+            [theme.breakpoints.down("xs")]: {
+              padding: theme.spacing(2, 2),
+            },
+            [theme.breakpoints.up("xs")]: {
+              padding: theme.spacing(3, 2),
+            },
+            [theme.breakpoints.up("sm")]: {
+              padding: theme.spacing(4, 2),
+            },
+            [theme.breakpoints.up("md")]: {
+              padding: theme.spacing(5, 2),
+            },
+            [theme.breakpoints.up("lg")]: {
+              padding: theme.spacing(6, 2),
+            },
+          },
           "&.MuiContainer-maxWidthXs": {
             maxWidth: 1280,
             [theme.breakpoints.down("xs")]: {

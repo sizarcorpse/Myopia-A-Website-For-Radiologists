@@ -1,15 +1,15 @@
-import * as React from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import Head from "next/head";
 import ThemeConfig from "themes/";
 import { CacheProvider } from "@emotion/react";
 import { createEmotionCache } from "utils/";
 import { SWRConfig } from "swr";
-import Cookies from "js-cookie";
 import { Navigation, Footer } from "components/surface";
 import { SessionProvider } from "next-auth/react";
 import { SnackbarProvider } from "notistack";
 import { Slide } from "@mui/material";
+import { useRouter } from "next/router";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,6 +18,7 @@ import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 
 export default function App(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const router = useRouter();
 
   return (
     <CacheProvider value={emotionCache}>
@@ -40,10 +41,14 @@ export default function App(props) {
               }}
               TransitionComponent={Slide}
             >
-              <Navigation>
+              {router.asPath === "/dashboard" ? (
                 <Component {...pageProps} />
-                <Footer />
-              </Navigation>
+              ) : (
+                <Navigation>
+                  <Component {...pageProps} />
+                  <Footer />
+                </Navigation>
+              )}
             </SnackbarProvider>
           </SessionProvider>
         </SWRConfig>
