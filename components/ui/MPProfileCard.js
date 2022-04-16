@@ -11,6 +11,8 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import ArticleIcon from "@mui/icons-material/Article";
 import EmailIcon from "@mui/icons-material/Email";
 
+const DefaultImageUrl = "/assets/root/Profile-Cover-Photo.svg";
+
 const iconRole = {
   admin: {
     icon: <AdminPanelSettingsIcon />,
@@ -128,7 +130,7 @@ const MpProfileCard = (props) => {
     <MpProfileCardStyled>
       <NextImageStyles>
         <Image
-          src={item.image}
+          src={item.image || DefaultImageUrl}
           width={270}
           height={270}
           objectFit="cover"

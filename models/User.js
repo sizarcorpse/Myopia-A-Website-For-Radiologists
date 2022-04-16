@@ -7,6 +7,9 @@ cloudinary.config({
   api_secret: process.env.CLOUD_API_SECRET,
 });
 
+const defaultImageUrl =
+  "https://res.cloudinary.com/dvgqaevma/image/upload/v1650133736/myopia-upload/Profile_Photo_Placeholder_dzhqxl.jpg";
+
 const UserSchema = new mongoose.Schema({
   // Defaults defined in next-auth user model
 
@@ -24,8 +27,7 @@ const UserSchema = new mongoose.Schema({
   image: {
     type: String,
     trim: true,
-    default:
-      "https://res.cloudinary.com/dvgqaevma/image/upload/v1649702266/myopia-upload/Profile_Photo_Placeholder_qx5411.jpg",
+    default: defaultImageUrl,
   },
 
   // Custom defined
@@ -108,30 +110,48 @@ UserSchema.pre("findOneAndUpdate", async function (next) {
   const updateImageWith = this.getUpdate().$set.image;
   const { image: currentImage } = await this.model.findOne(this.getQuery());
 
-  if (updateImageWith && updateImageWith === currentImage) {
+  if (currentImage === defaultImageUrl && updateImageWith === defaultImageUrl) {
     next();
-  } else {
-    if (
-      currentImage ===
-      "https://res.cloudinary.com/dvgqaevma/image/upload/v1649702266/myopia-upload/Profile_Photo_Placeholder_qx5411.jpg"
-    ) {
-      next();
-    }
-    const public_id = currentImage
-      .split("/")
-      .slice(7)
-      .join("/")
-      .split(".")
-      .slice(0, 1)
-      .join("/");
+  }
 
-    const result = await cloudinary.v2.api.delete_resources(public_id);
-    if (result) {
-      next();
-    } else {
-      next(new Error("Image not deleted"));
+  if (currentImage !== updateImageWith && currentImage === defaultImageUrl) {
+    next();
+  }
+
+  if (currentImage !== updateImageWith && currentImage != defaultImageUrl) {
+    await removeOldImageFromCloudinary(currentImage, next);
+  }
+
+  if (
+    updateImageWith === "" ||
+    updateImageWith === undefined ||
+    updateImageWith === null
+  ) {
+    this.set({
+      image: defaultImageUrl,
+    });
+
+    if (currentImage !== defaultImageUrl) {
+      await removeOldImageFromCloudinary(currentImage, next);
     }
   }
 });
+
+const removeOldImageFromCloudinary = async (currentImageUrl, next) => {
+  const public_id = currentImageUrl
+    .split("/")
+    .slice(7)
+    .join("/")
+    .split(".")
+    .slice(0, 1)
+    .join("/");
+
+  const result = await cloudinary.v2.api.delete_resources(public_id);
+  if (result) {
+    next();
+  } else {
+    next(new Error("Image not deleted"));
+  }
+};
 
 export default mongoose.models.User || mongoose.model("User", UserSchema);

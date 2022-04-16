@@ -154,6 +154,9 @@ const UpdateUserForm = (props) => {
   };
 
   const handlePhotoUpload = async () => {
+    if (files[0] === undefined || files[0] === null) {
+      return "";
+    }
     if (
       tempFile.size === files[0].file.size &&
       tempFile.type === files[0].file.type
@@ -266,11 +269,12 @@ const UpdateUserForm = (props) => {
                       acceptedFileTypes={["image/*"]}
                       server={{
                         load: (source, load) => {
-                          fetch(source)
-                            .then((response) => response.blob())
-                            .then((blob) => {
-                              load(blob), setTempFile(blob);
-                            });
+                          updateForm.image != "" &&
+                            fetch(source)
+                              .then((response) => response.blob())
+                              .then((blob) => {
+                                load(blob), setTempFile(blob);
+                              });
                         },
                       }}
                     />
