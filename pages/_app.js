@@ -41,7 +41,7 @@ export default function App(props) {
               }}
               TransitionComponent={Slide}
             >
-              {router.asPath === "/dashboard" ? (
+              {router.asPath.startsWith("/dashboard") ? (
                 <Component {...pageProps} />
               ) : (
                 <Navigation>

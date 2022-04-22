@@ -31,7 +31,7 @@ export default async function handler(req, res) {
           const user = await User.findPublicProfileByUsername(q_username);
 
           if (!user) {
-            res.status(404).json({ message: "User not found" });
+            res.status(404).json(error.message);
           }
 
           res.status(200).json(user);
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
           if (updateResponse) {
             res.status(200).json({ status: "success", user: updateResponse });
           } else {
-            res.status(404).json({ status: "unsuccessful" });
+            res.status(400).json({ status: "unsuccessful" });
           }
         } else {
           res.status(401).json({ message: "Unauthorized" });

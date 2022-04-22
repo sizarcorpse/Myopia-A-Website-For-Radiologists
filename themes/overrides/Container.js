@@ -33,10 +33,10 @@ export default function Container(theme) {
               padding: theme.spacing(4, 2),
             },
             [theme.breakpoints.up("md")]: {
-              padding: theme.spacing(5, 2),
+              padding: theme.spacing(4, 4),
             },
             [theme.breakpoints.up("lg")]: {
-              padding: theme.spacing(6, 2),
+              padding: theme.spacing(4, 4),
             },
           },
           "&.MuiContainer-maxWidthXs": {

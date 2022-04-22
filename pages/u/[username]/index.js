@@ -2,6 +2,7 @@ import Head from "next/head";
 import { ProfileSurface } from "components/surface";
 import { Grid } from "@mui/material";
 import { getSession } from "next-auth/react";
+import DefaultErrorPage from "next/error";
 
 const UserProfile = (props) => {
   const { isOwner, userInformation } = props;

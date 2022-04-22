@@ -102,7 +102,10 @@ const MpDropdownMenu = (props) => {
           aria-controls={open ? "account-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
         >
-          <Avatar src={image} sx={{ width: 32, height: 32 }}></Avatar>
+          <Avatar
+            src={image}
+            sx={{ width: 40, height: 40, border: "1px solid #0c2f56" }}
+          ></Avatar>
         </IconButton>
       )}
 
@@ -136,7 +139,7 @@ const MpDropdownMenu = (props) => {
         </MenuItemStyled>
         <Divider />
         {role === "admin" &&
-          (router.pathname === "/dashboard" ? (
+          (router.pathname.startsWith("/dashboard") ? (
             <MenuItemStyled>
               <ListItemIcon>
                 <PreviewIcon fontSize="small" />

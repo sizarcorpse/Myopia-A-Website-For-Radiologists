@@ -1,23 +1,30 @@
 import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
 
-const MPButtonGroupStyled = styled(Box)(({ theme }) => ({
+const MPButtonGroupStyled = styled(Box)(({ theme, jc }) => ({
   display: "flex",
   flexDirection: "row",
   flexWrap: "wrap",
-  justifyContent: "flex-start",
+  justifyContent: jc,
   alignItems: "center",
   gap: theme.spacing(2),
 }));
 
 const MPButtonGroup = (props) => {
-  const { children } = props;
+  const { children, justifyContent } = props;
 
-  return <MPButtonGroupStyled>{children}</MPButtonGroupStyled>;
+  return (
+    <MPButtonGroupStyled jc={justifyContent}>{children}</MPButtonGroupStyled>
+  );
+};
+
+MPButtonGroup.defaultProps = {
+  justifyContent: "flex-start",
 };
 
 MPButtonGroup.propTypes = {
   children: PropTypes.node.isRequired,
+  justifyContent: PropTypes.string,
 };
 
 export default MPButtonGroup;
