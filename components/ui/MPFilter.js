@@ -1,5 +1,4 @@
 import { forwardRef, cloneElement, Children, isValidElement } from "react";
-import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
 
 const MPFilterStyled = styled(Box)(({ theme }) => ({
@@ -22,7 +21,5 @@ const MPFilter = forwardRef(({ children, ...props }, ref) => {
     </MPFilterStyled>
   );
 });
-
-MPFilter.propTypes = {};
 
 export default MPFilter;

@@ -66,10 +66,3 @@ const MPFilterItem = (props) => {
 MPFilterItem.propTypes = {};
 
 export default MPFilterItem;
-// cloneElement(icon, {
-//     onClick: handleFilterOpen,
-//     fontSize: "small",
-//     sx: {
-//       cursor: "pointer",
-//     },
-//   })

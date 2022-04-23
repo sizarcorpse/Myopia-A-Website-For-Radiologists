@@ -19,3 +19,4 @@ export { default as MPProfileCard } from "./MPProfileCard";
 export { default as MpDropdownMenu } from "./MpDropdownMenu";
 export { default as MPFilter } from "./MPFilter";
 export { default as MPFilterItem } from "./MPFilterItem";
+export { default as MPCategoryCard } from "./MPCategoryCard";

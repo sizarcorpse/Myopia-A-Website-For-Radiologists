@@ -5,7 +5,7 @@ import { getSession } from "next-auth/react";
 import { useSnackbar } from "notistack";
 import { DashboardSurface } from "components/surface";
 import { CategoriesHeader } from "components/dashboard/categories";
-import { MPFilter, MPFilterItem } from "components/ui";
+import { MPFilter, MPFilterItem, MPCategoryCard } from "components/ui";
 import useSWR from "swr";
 import FilterNoneIcon from "@mui/icons-material/FilterNone";
 import SortIcon from "@mui/icons-material/Sort";
@@ -76,7 +76,8 @@ const statusItems = [
 const Categories = (props) => {
   const { session, initialData } = props;
   const { enqueueSnackbar } = useSnackbar();
-  const [limit, setLimit] = useState(1);
+  const [page, setPage] = useState(parseInt(1));
+  const [limit, setLimit] = useState(5);
   const [sortBy, setSortBy] = useState("createdAt");
   const [sort, setSort] = useState("desc");
   const [status, setStatus] = useState("all");
@@ -86,7 +87,7 @@ const Categories = (props) => {
     error,
     mutate: mutateCategories,
   } = useSWR(
-    `/api/category?sortBy=${sortBy}&sort=${sort}&limit=${limit}&page=${1}${
+    `/api/category?sortBy=${sortBy}&sort=${sort}&limit=${limit}&page=${page}${
       status ? `&status=${status}` : ""
     }`,
     {
@@ -128,7 +129,7 @@ const Categories = (props) => {
             mode="home"
             handleCategoryDelete={handleCategoryDelete}
           />
-          <MPFilter test="test">
+          <MPFilter>
             <MPFilterItem
               name="limit"
               label="Limit"
@@ -163,53 +164,20 @@ const Categories = (props) => {
             />
           </MPFilter>
         </Grid>
+
         <Grid item xs={12}>
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              gap: 4,
             }}
           >
             {categories.map((category, index) => (
-              <Box
-                className="c-card"
-                key={index}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 1,
-                  width: "100%",
-                  maxWidth: "400px",
-                  backgroundColor: "lightgreen",
-                  p: 2,
-
-                  backgroundImage: `url(${
-                    (category.cover && category.cover.url) || undefined
-                  })`,
-
-                  "& > p": {
-                    color: "#fff",
-                  },
-                }}
-              >
-                <Typography variant="h7" component="p">
-                  {category.name}
-                </Typography>
-                <Typography variant="h7" component="p">
-                  {category.slug}
-                </Typography>
-                <Typography variant="h7" component="p">
-                  {category._id}
-                </Typography>
-                <Link href={`/dashboard/categories/${category._id}`}>
-                  <Button>Edit</Button>
-                </Link>
-
-                <Button onClick={() => handleCategoryDelete(category._id)}>
-                  Delete
-                </Button>
-              </Box>
+              <MPCategoryCard item={category} key={index} />
             ))}
           </Box>
         </Grid>
@@ -223,7 +191,7 @@ export const getServerSideProps = async (ctx) => {
   const session = await getSession({ ctx });
 
   const sortBy = "createdAt";
-  const limit = 1;
+  const limit = 5;
   const sort = "desc";
 
   if (!session || session.user.role != "admin") {
