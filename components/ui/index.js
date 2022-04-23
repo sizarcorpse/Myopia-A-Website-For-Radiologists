@@ -17,3 +17,5 @@ export { default as MPDrawer } from "./MPDrawer";
 export { default as MPBlogCard } from "./MPBlogCard";
 export { default as MPProfileCard } from "./MPProfileCard";
 export { default as MpDropdownMenu } from "./MpDropdownMenu";
+export { default as MPFilter } from "./MPFilter";
+export { default as MPFilterItem } from "./MPFilterItem";

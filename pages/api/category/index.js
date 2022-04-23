@@ -5,7 +5,7 @@ import { getSession } from "next-auth/react";
 export default async function handler(req, res) {
   await connectToDatabase();
   const {
-    query: {},
+    query: { page, limit, sort, sortBy, status },
     body,
     method,
   } = req;
@@ -16,7 +16,28 @@ export default async function handler(req, res) {
   switch (method) {
     case "GET":
       try {
-        const categories = await Category.find({});
+        let _page;
+        let _limit;
+        let _sort;
+        let _sortBy;
+
+        page ? (_page = page) : (_page = 1);
+        limit ? (_limit = limit) : (_limit = 3);
+        sort ? (_sort = sort) : (_sort = "desc");
+        sortBy ? (_sortBy = sortBy) : (_sortBy = "name");
+
+        let q =
+          status === "published" || status === "draft"
+            ? { status: status }
+            : status === "all"
+            ? {}
+            : {};
+
+        const categories = await Category.find(q)
+          .sort({ [_sortBy]: _sort })
+          .skip((_page - 1) * _limit)
+          .limit(_limit)
+          .exec();
         if (categories) {
           res.status(200).json(categories);
         } else {
