@@ -1,4 +1,3 @@
-import {} from "react";
 import PropTypes from "prop-types";
 import { Box, styled, Divider, Typography } from "@mui/material";
 import { MPButton, MPButtonGroup } from "components/ui";
@@ -6,8 +5,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PublishIcon from "@mui/icons-material/Publish";
 import DraftsIcon from "@mui/icons-material/Drafts";
-import { useSnackbar } from "notistack";
-import { useRouter } from "next/router";
+import { useCategory } from "contexts/CategoryContext";
 
 const CategoriesHeaderStyled = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -17,78 +15,7 @@ const CategoriesHeaderStyled = styled(Box)(({ theme }) => ({
 
 const CategoriesHeader = (props) => {
   const { catId, mode, title, status, isFormValueChange } = props;
-  const { enqueueSnackbar } = useSnackbar();
-  const router = useRouter();
-
-  const handlePublished = async () => {
-    try {
-      const r = await fetch(`/api/category/${catId}/publish`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-
-      const rd = await r.json();
-
-      if (rd.status === "success") {
-        router.push(`/dashboard/categories/`);
-        enqueueSnackbar("Category created successfully", {
-          variant: "success",
-        });
-      } else {
-        enqueueSnackbar("Category create failed", { variant: "error" });
-      }
-    } catch (error) {
-      enqueueSnackbar("Category published failed", { variant: "error" });
-    }
-  };
-
-  const handleDraft = async () => {
-    try {
-      const r = await fetch(`/api/category/${catId}/draft`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
-
-      const rd = await r.json();
-
-      if (rd.status === "success") {
-        router.push(`/dashboard/categories/`);
-        enqueueSnackbar("Category created successfully", {
-          variant: "success",
-        });
-      } else {
-        enqueueSnackbar("Category create failed", { variant: "error" });
-      }
-    } catch (error) {
-      enqueueSnackbar("Category Draft failed", { variant: "error" });
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      const r = await fetch(`/api/category/${catId}`, {
-        method: "DELETE",
-      });
-      const rd = await r.json();
-
-      if (rd.status === "success") {
-        router.push(`/dashboard/categories/`);
-        enqueueSnackbar("Category deleted successfully", {
-          variant: "success",
-        });
-      } else {
-        enqueueSnackbar("Category deleted failed", { variant: "error" });
-      }
-    } catch (err) {
-      enqueueSnackbar("Category deleted failed", { variant: "error" });
-    }
-  };
+  const { handlePublished, handleDraft, handleDelete } = useCategory();
 
   return (
     <CategoriesHeaderStyled>
@@ -111,7 +38,7 @@ const CategoriesHeader = (props) => {
             <MPButton
               variant="published"
               icon={<PublishIcon />}
-              handle={handlePublished}
+              handle={() => handlePublished(catId)}
               disabled={!catId}
             >
               Published
@@ -122,7 +49,7 @@ const CategoriesHeader = (props) => {
             <MPButton
               variant="light"
               icon={<DraftsIcon />}
-              handle={handleDraft}
+              handle={() => handleDraft(catId)}
               disabled={isFormValueChange}
             >
               Draft
@@ -133,7 +60,7 @@ const CategoriesHeader = (props) => {
               <MPButton
                 variant="reddish"
                 icon={<DeleteIcon />}
-                handle={handleDelete}
+                handle={() => handleDelete(catId)}
                 disabled={isFormValueChange}
               >
                 Delete

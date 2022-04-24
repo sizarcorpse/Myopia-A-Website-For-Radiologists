@@ -1,8 +1,6 @@
 import { useState } from "react";
-import Link from "next/link";
-import { Box, styled, Grid, Typography, Button } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { getSession } from "next-auth/react";
-import { useSnackbar } from "notistack";
 import { DashboardSurface } from "components/surface";
 import { CategoriesHeader } from "components/dashboard/categories";
 import { MPFilter, MPFilterItem, MPCategoryCard } from "components/ui";
@@ -11,6 +9,7 @@ import FilterNoneIcon from "@mui/icons-material/FilterNone";
 import SortIcon from "@mui/icons-material/Sort";
 import SwapVertIcon from "@mui/icons-material/SwapVert";
 import FilterListIcon from "@mui/icons-material/FilterList";
+
 const limitItems = [
   {
     value: 1,
@@ -75,7 +74,6 @@ const statusItems = [
 
 const Categories = (props) => {
   const { session, initialData } = props;
-  const { enqueueSnackbar } = useSnackbar();
   const [page, setPage] = useState(parseInt(1));
   const [limit, setLimit] = useState(5);
   const [sortBy, setSortBy] = useState("createdAt");
@@ -91,44 +89,16 @@ const Categories = (props) => {
       status ? `&status=${status}` : ""
     }`,
     {
+      revalidateOnFocus: false,
       fallbackData: initialData,
     }
   );
-
-  const handleCategoryDelete = async (id) => {
-    try {
-      mutateCategories(
-        categories.filter((c) => c._id != id),
-        false
-      );
-
-      const r = await fetch(`/api/category/${id}`, {
-        method: "DELETE",
-      });
-      const rd = await r.json();
-
-      if (rd.status === "success") {
-        mutateCategories();
-        enqueueSnackbar("Category deleted successfully", {
-          variant: "success",
-        });
-      } else {
-        enqueueSnackbar("Category deleted failed", { variant: "error" });
-      }
-    } catch (err) {
-      enqueueSnackbar("Category deleted failed", { variant: "error" });
-    }
-  };
 
   return (
     <DashboardSurface session={session}>
       <Grid container spacing={4}>
         <Grid item xs={12}>
-          <CategoriesHeader
-            title="Category"
-            mode="home"
-            handleCategoryDelete={handleCategoryDelete}
-          />
+          <CategoriesHeader title="Category" mode="home" />
           <MPFilter>
             <MPFilterItem
               name="limit"
@@ -177,7 +147,12 @@ const Categories = (props) => {
             }}
           >
             {categories.map((category, index) => (
-              <MPCategoryCard item={category} key={index} />
+              <MPCategoryCard
+                item={category}
+                key={index}
+                mutateCategories={mutateCategories}
+                dataWillMutate={categories}
+              />
             ))}
           </Box>
         </Grid>

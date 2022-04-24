@@ -10,6 +10,7 @@ import { SessionProvider } from "next-auth/react";
 import { SnackbarProvider } from "notistack";
 import { Slide } from "@mui/material";
 import { useRouter } from "next/router";
+import { CategoryProvider } from "contexts/CategoryContext";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -42,7 +43,9 @@ export default function App(props) {
               TransitionComponent={Slide}
             >
               {router.asPath.startsWith("/dashboard") ? (
-                <Component {...pageProps} />
+                <CategoryProvider>
+                  <Component {...pageProps} />
+                </CategoryProvider>
               ) : (
                 <Navigation>
                   <Component {...pageProps} />

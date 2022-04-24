@@ -22,9 +22,9 @@ export default async function handler(req, res) {
         let _sortBy;
 
         page ? (_page = page) : (_page = 1);
-        limit ? (_limit = limit) : (_limit = 3);
+        limit ? (_limit = limit) : (_limit = 5);
         sort ? (_sort = sort) : (_sort = "desc");
-        sortBy ? (_sortBy = sortBy) : (_sortBy = "name");
+        sortBy ? (_sortBy = sortBy) : (_sortBy = "createdAt");
 
         let q =
           status === "published" || status === "draft"

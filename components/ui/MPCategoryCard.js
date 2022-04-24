@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { useRouter } from "next/router";
 import {
   Box,
   styled,
@@ -8,6 +9,7 @@ import {
   Divider,
 } from "@mui/material";
 import Image from "next/image";
+import { useCategory } from "contexts/CategoryContext";
 import capitalize from "lodash/capitalize";
 import EditIcon from "@mui/icons-material/Edit";
 import PublishIcon from "@mui/icons-material/Publish";
@@ -62,7 +64,15 @@ const MPCategoryCardActionsStyled = styled(Box)(({ theme }) => ({
 const MPCategoryCard = (props) => {
   const {
     item: { _id, name, status, cover },
+    mutateCategories,
+    dataWillMutate,
   } = props;
+  const router = useRouter();
+  const {
+    handlePublishedAndMutate,
+    handleDraftAndMutate,
+    handleDeleteAndMutate,
+  } = useCategory();
 
   return (
     <MPCategoryCardStyled>
@@ -76,13 +86,14 @@ const MPCategoryCard = (props) => {
         />
       </Box>
       <MPCategoryCardStatusStyled status={status}>
-        <Typography variant="body1" component="p">
+        <Typography variant="body2" component="p">
           {capitalize(status)}
         </Typography>
       </MPCategoryCardStatusStyled>
       <MPCategoryCardContentStyled>
         <Typography
           variant="h7"
+          component="h2"
           color="primary.dark"
           sx={{
             textOverflow: "ellipsis",
@@ -99,28 +110,48 @@ const MPCategoryCard = (props) => {
       </MPCategoryCardContentStyled>
       <MPCategoryCardActionsStyled>
         <Tooltip title="Edit Category">
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            onClick={() => {
+              router.push(`/dashboard/categories/${_id}`);
+            }}
+          >
             <EditIcon />
           </IconButton>
         </Tooltip>
         <Divider orientation="vertical" flexItem />
         {status === "published" && (
           <Tooltip title="Draft Category">
-            <IconButton size="small">
+            <IconButton
+              size="small"
+              onClick={() => {
+                handleDraftAndMutate(_id, mutateCategories);
+              }}
+            >
               <DraftsIcon />
             </IconButton>
           </Tooltip>
         )}
         {status === "draft" && (
           <Tooltip title="Published Category">
-            <IconButton size="small">
+            <IconButton
+              size="small"
+              onClick={() => {
+                handlePublishedAndMutate(_id, mutateCategories);
+              }}
+            >
               <PublishIcon />
             </IconButton>
           </Tooltip>
         )}
         <Divider orientation="vertical" flexItem />
         <Tooltip title="Delete Category">
-          <IconButton size="small">
+          <IconButton
+            size="small"
+            onClick={() => {
+              handleDeleteAndMutate(_id, mutateCategories, dataWillMutate);
+            }}
+          >
             <DeleteIcon />
           </IconButton>
         </Tooltip>
@@ -138,6 +169,7 @@ MPCategoryCard.propTypes = {
       url: PropTypes.string.isRequired,
       public_id: PropTypes.string.isRequired,
     }).isRequired,
+    mutateCategories: PropTypes.func.isRequired,
   }).isRequired,
 };
 
