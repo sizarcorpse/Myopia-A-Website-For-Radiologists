@@ -65,7 +65,7 @@ export const getServerSideProps = async (ctx) => {
   }
 
   if (session && session.user.username === username) {
-    const r = await fetch(`http://localhost:3000/api/user/${username}`, {
+    const r = await fetch(`${process.env.NEXT_API_URL}/user/${username}`, {
       method: "GET",
       headers: {
         Accept: "application/json",

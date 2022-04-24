@@ -165,10 +165,10 @@ const UpdateUserForm = (props) => {
     } else {
       const file = new FormData();
       file.append("file", files[0].file);
-      file.append("upload_preset", "myopia-upload");
+      file.append("upload_preset", process.env.CLOUD_PRESET);
 
       const r = await fetch(
-        `https://api.cloudinary.com/v1_1/dvgqaevma/image/upload`,
+        `${process.env.CLOUD_URL}/${process.env.CLOUD_NAME}/image/upload`,
         {
           method: "POST",
           body: file,
