@@ -204,7 +204,7 @@ const DashboardSurface = (props) => {
           <Box key={index}>
             <List>
               {menu.map((item, index) => (
-                <ListItemButtonStyled key={index} open={open}>
+                <ListItemButtonStyled key={index} open={open} component="li">
                   <ListItemIconStyled open={open}>
                     {createElement(item.icon, true)}
                   </ListItemIconStyled>

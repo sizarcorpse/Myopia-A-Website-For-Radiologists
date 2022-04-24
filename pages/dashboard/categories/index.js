@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, styled } from "@mui/material";
 import { getSession } from "next-auth/react";
 import { DashboardSurface } from "components/surface";
 import { CategoriesHeader } from "components/dashboard/categories";
@@ -26,6 +26,14 @@ const limitItems = [
   {
     value: 4,
     label: "4",
+  },
+  {
+    value: 5,
+    label: "5",
+  },
+  {
+    value: 10,
+    label: "10",
   },
 ];
 
@@ -72,10 +80,21 @@ const statusItems = [
   },
 ];
 
+const BoxGridStyled = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+  gridTemplateRows: "repeat(auto-fill, minmax(310px, 1fr))",
+  rowGap: theme.spacing(3),
+  columnGap: theme.spacing(3),
+  [theme.breakpoints.down("md")]: {
+    gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+  },
+}));
+
 const Categories = (props) => {
   const { session, initialData } = props;
   const [page, setPage] = useState(parseInt(1));
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(10);
   const [sortBy, setSortBy] = useState("createdAt");
   const [sort, setSort] = useState("desc");
   const [status, setStatus] = useState("all");
@@ -136,16 +155,7 @@ const Categories = (props) => {
         </Grid>
 
         <Grid item xs={12}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              gap: 4,
-            }}
-          >
+          <BoxGridStyled>
             {categories.map((category, index) => (
               <MPCategoryCard
                 item={category}
@@ -154,7 +164,7 @@ const Categories = (props) => {
                 dataWillMutate={categories}
               />
             ))}
-          </Box>
+          </BoxGridStyled>
         </Grid>
       </Grid>
     </DashboardSurface>

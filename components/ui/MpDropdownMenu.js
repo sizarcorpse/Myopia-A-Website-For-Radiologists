@@ -101,10 +101,12 @@ const MpDropdownMenu = (props) => {
           sx={{ ml: 2 }}
           aria-controls={open ? "account-menu" : undefined}
           aria-expanded={open ? "true" : undefined}
+          aria-label="account menu"
         >
           <Avatar
             src={image}
             sx={{ width: 40, height: 40, border: "1px solid #0c2f56" }}
+            alt={username}
           ></Avatar>
         </IconButton>
       )}
@@ -118,8 +120,8 @@ const MpDropdownMenu = (props) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItemStyled>
-          <Avatar src={image} />
+        <MenuItemStyled component="li">
+          <Avatar src={image} alt={"username"} />
           <Link href={`/u/${username}`}>
             <Typography variant="h8" fontWeight={500} component="p">
               {username}
@@ -127,7 +129,7 @@ const MpDropdownMenu = (props) => {
           </Link>
         </MenuItemStyled>
 
-        <MenuItemStyled>
+        <MenuItemStyled component="li">
           <ListItemIcon>
             <UpdateIcon fontSize="small" />
           </ListItemIcon>
@@ -140,7 +142,7 @@ const MpDropdownMenu = (props) => {
         <Divider />
         {role === "admin" &&
           (router.pathname.startsWith("/dashboard") ? (
-            <MenuItemStyled>
+            <MenuItemStyled component="li">
               <ListItemIcon>
                 <PreviewIcon fontSize="small" />
               </ListItemIcon>
@@ -151,7 +153,7 @@ const MpDropdownMenu = (props) => {
               </Link>
             </MenuItemStyled>
           ) : (
-            <MenuItemStyled>
+            <MenuItemStyled component="li">
               <ListItemIcon>
                 <DashboardIcon fontSize="small" />
               </ListItemIcon>
@@ -162,7 +164,7 @@ const MpDropdownMenu = (props) => {
               </Link>
             </MenuItemStyled>
           ))}
-        <MenuItemStyled onClick={() => signOut()}>
+        <MenuItemStyled onClick={() => signOut()} component="li">
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

@@ -1,12 +1,15 @@
 import { Grid } from "@mui/material";
 import { getSession } from "next-auth/react";
 import { DashboardSurface } from "components/surface";
-import { CategoriesHeader } from "components/dashboard/categories";
+import {
+  CategoriesHeader,
+  CategoriesSidebarRecent,
+} from "components/dashboard/categories";
 import { NewCategoryForm } from "components/form";
 import useSWR from "swr";
 
 const UpdateCategory = (props) => {
-  const { session, initialData } = props;
+  const { session, initialData, recentCategories } = props;
 
   const {
     data: category,
@@ -14,6 +17,14 @@ const UpdateCategory = (props) => {
     mutate: mutateUpdatedCategory,
   } = useSWR(`/api/category/${initialData._id}`, {
     fallbackData: initialData,
+  });
+
+  const {
+    data: categories,
+    error: rcError,
+    mutate: mutateRecentCategories,
+  } = useSWR(`/api/category`, {
+    fallbackData: recentCategories,
   });
 
   const categoryForm = {
@@ -42,6 +53,9 @@ const UpdateCategory = (props) => {
             mutateUpdatedCategory={mutateUpdatedCategory}
           />
         </Grid>
+        <Grid item xs={6}>
+          <CategoriesSidebarRecent recentCategories={categories} />
+        </Grid>
       </Grid>
     </DashboardSurface>
   );
@@ -69,11 +83,23 @@ export const getServerSideProps = async (ctx) => {
       cookie: req.headers.cookie,
     },
   });
+
   const initialData = await r.json();
+
+  const rc = await fetch(`${process.env.NEXT_API_URL}/category`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+  });
+  const recentCategories = await rc.json();
+
   return {
     props: {
       session,
       initialData,
+      recentCategories,
     },
   };
 };

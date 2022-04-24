@@ -27,7 +27,7 @@ const CategoriesSidebarRecent = (props) => {
       <List
         sx={{ width: "100%", maxWidth: 420 }}
         subheader={
-          <ListSubheader component="div" id="nested-list-subheader">
+          <ListSubheader component="div" sx={{ lineHeight: "1.6em", mb: 1 }}>
             Recent Categories
           </ListSubheader>
         }

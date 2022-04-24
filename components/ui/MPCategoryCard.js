@@ -20,7 +20,7 @@ const MPCategoryCardStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   width: "100%",
-  maxWidth: 280,
+
   position: "relative",
   borderRadius: theme.spacing(1),
   boxShadow:
@@ -82,6 +82,7 @@ const MPCategoryCard = (props) => {
           alt={name}
           width={280}
           height={157.5}
+          layout="responsive"
           objectFit="cover"
         />
       </Box>
@@ -169,7 +170,7 @@ MPCategoryCard.propTypes = {
       url: PropTypes.string.isRequired,
       public_id: PropTypes.string.isRequired,
     }).isRequired,
-    mutateCategories: PropTypes.func.isRequired,
+    mutateCategories: PropTypes.func,
   }).isRequired,
 };
 
